@@ -1,8 +1,14 @@
 package bean;
+<<<<<<< HEAD
 // Generated 09/12/2025 21:39:33 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
+=======
+// Generated 07/10/2025 20:07:58 by Hibernate Tools 4.3.1
+
+
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,8 +37,12 @@ public class CvsVendas  implements java.io.Serializable {
      private CvsClientes cvsClientes;
      private CvsFuncionarios cvsFuncionarios;
      private Date cvsDataVenda;
+<<<<<<< HEAD
      private BigDecimal cvsTotal;
      private Set cvsVendasjoiases = new HashSet(0);
+=======
+     private double cvsTotal;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
     public CvsVendas() {
     }
@@ -41,13 +51,20 @@ public class CvsVendas  implements java.io.Serializable {
     public CvsVendas(int cvsIdVenda) {
         this.cvsIdVenda = cvsIdVenda;
     }
+<<<<<<< HEAD
     public CvsVendas(int cvsIdVenda, CvsClientes cvsClientes, CvsFuncionarios cvsFuncionarios, Date cvsDataVenda, BigDecimal cvsTotal, Set cvsVendasjoiases) {
+=======
+    public CvsVendas(int cvsIdVenda, CvsClientes cvsClientes, CvsFuncionarios cvsFuncionarios, Date cvsDataVenda, double cvsTotal) {
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
        this.cvsIdVenda = cvsIdVenda;
        this.cvsClientes = cvsClientes;
        this.cvsFuncionarios = cvsFuncionarios;
        this.cvsDataVenda = cvsDataVenda;
        this.cvsTotal = cvsTotal;
+<<<<<<< HEAD
        this.cvsVendasjoiases = cvsVendasjoiases;
+=======
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     }
    
      @Id 
@@ -94,6 +111,7 @@ public class CvsVendas  implements java.io.Serializable {
 
     
     @Column(name="cvs_total", precision=10)
+<<<<<<< HEAD
     public BigDecimal getCvsTotal() {
         return this.cvsTotal;
     }
@@ -110,6 +128,17 @@ public class CvsVendas  implements java.io.Serializable {
     public void setCvsVendasjoiases(Set cvsVendasjoiases) {
         this.cvsVendasjoiases = cvsVendasjoiases;
     }
+=======
+    public double getCvsTotal() {
+        return this.cvsTotal;
+    }
+    
+    public void setCvsTotal(double cvsTotal) {
+        this.cvsTotal = cvsTotal;
+    }
+
+
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
 
 

@@ -44,11 +44,19 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_camilly_souza?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
+<<<<<<< HEAD
     <mapping class="bean.CvsVendasjoias"/>
     <mapping class="bean.CvsClientes"/>
     <mapping class="bean.CvsVendas"/>
     <mapping class="bean.CvsFuncionarios"/>
     <mapping class="bean.CvsUsuario"/>
+=======
+    <mapping class="bean.CvsClientes"/>
+    <mapping class="bean.CvsUsuario"/>
+    <mapping class="bean.CvsFuncionarios"/>
+    <mapping class="bean.CvsVendasjoias"/>
+    <mapping class="bean.CvsVendas"/>
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     <mapping class="bean.CvsJoias"/>
   </session-factory>
 </hibernate-configuration>

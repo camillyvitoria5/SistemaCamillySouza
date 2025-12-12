@@ -1,5 +1,9 @@
 package bean;
+<<<<<<< HEAD
 // Generated 09/12/2025 21:39:33 by Hibernate Tools 4.3.1
+=======
+// Generated 07/10/2025 20:07:58 by Hibernate Tools 4.3.1
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
 
 import java.util.Date;
@@ -8,6 +12,11 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+<<<<<<< HEAD
+=======
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,30 +33,42 @@ import javax.persistence.TemporalType;
 public class CvsFuncionarios  implements java.io.Serializable {
 
 
+<<<<<<< HEAD
      private int cvsIdFuncionario;
+=======
+     private int cvsIdUsuario;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
      private String cvsFuncao;
      private Date cvsDataNascimento;
      private String cvsCpf;
      private String cvsEmail;
      private String cvsNome;
      private String cvsTelefone;
+<<<<<<< HEAD
      private Set cvsVendases = new HashSet(0);
+=======
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
     public CvsFuncionarios() {
     }
 
+<<<<<<< HEAD
 	
     public CvsFuncionarios(int cvsIdFuncionario) {
         this.cvsIdFuncionario = cvsIdFuncionario;
     }
     public CvsFuncionarios(int cvsIdFuncionario, String cvsFuncao, Date cvsDataNascimento, String cvsCpf, String cvsEmail, String cvsNome, String cvsTelefone, Set cvsVendases) {
        this.cvsIdFuncionario = cvsIdFuncionario;
+=======
+    public CvsFuncionarios(String cvsFuncao, Date cvsDataNascimento, String cvsCpf, String cvsEmail, String cvsNome, String cvsTelefone) {
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
        this.cvsFuncao = cvsFuncao;
        this.cvsDataNascimento = cvsDataNascimento;
        this.cvsCpf = cvsCpf;
        this.cvsEmail = cvsEmail;
        this.cvsNome = cvsNome;
        this.cvsTelefone = cvsTelefone;
+<<<<<<< HEAD
        this.cvsVendases = cvsVendases;
     }
    
@@ -61,6 +82,20 @@ public class CvsFuncionarios  implements java.io.Serializable {
     
     public void setCvsIdFuncionario(int cvsIdFuncionario) {
         this.cvsIdFuncionario = cvsIdFuncionario;
+=======
+    }
+   
+     @Id @GeneratedValue(strategy=IDENTITY)
+
+    
+    @Column(name="cvs_id_usuario", unique=true, nullable=false)
+    public int getCvsIdUsuario() {
+        return this.cvsIdUsuario;
+    }
+    
+    public void setCvsIdUsuario(int cvsIdUsuario) {
+        this.cvsIdUsuario = cvsIdUsuario;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     }
 
     
@@ -123,6 +158,7 @@ public class CvsFuncionarios  implements java.io.Serializable {
         this.cvsTelefone = cvsTelefone;
     }
 
+<<<<<<< HEAD
 @OneToMany(fetch=FetchType.LAZY, mappedBy="cvsFuncionarios")
     public Set getCvsVendases() {
         return this.cvsVendases;
@@ -131,6 +167,9 @@ public class CvsFuncionarios  implements java.io.Serializable {
     public void setCvsVendases(Set cvsVendases) {
         this.cvsVendases = cvsVendases;
     }
+=======
+
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
 
 

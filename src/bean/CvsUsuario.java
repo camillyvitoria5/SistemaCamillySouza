@@ -1,5 +1,9 @@
 package bean;
+<<<<<<< HEAD
 // Generated 09/12/2025 21:39:33 by Hibernate Tools 4.3.1
+=======
+// Generated 07/10/2025 20:07:58 by Hibernate Tools 4.3.1
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
 
 import java.util.Date;
@@ -22,18 +26,30 @@ import javax.persistence.TemporalType;
 public class CvsUsuario  implements java.io.Serializable {
 
 
+<<<<<<< HEAD
      private Integer cvsIdUsuario;
+=======
+     private int cvsIdcodigo;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
      private String cvsNome;
      private String cvsApelido;
      private String cvsSenha;
      private Date cvsDataNascimento;
+<<<<<<< HEAD
      private Integer cvsAtivo;
+=======
+     private int cvsAtivo;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
      private String cvsCpf;
 
     public CvsUsuario() {
     }
 
+<<<<<<< HEAD
     public CvsUsuario(String cvsNome, String cvsApelido, String cvsSenha, Date cvsDataNascimento, Integer cvsAtivo, String cvsCpf) {
+=======
+    public CvsUsuario(String cvsNome, String cvsApelido, String cvsSenha, Date cvsDataNascimento, int cvsAtivo, String cvsCpf) {
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
        this.cvsNome = cvsNome;
        this.cvsApelido = cvsApelido;
        this.cvsSenha = cvsSenha;
@@ -45,6 +61,7 @@ public class CvsUsuario  implements java.io.Serializable {
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
+<<<<<<< HEAD
     @Column(name="cvs_id_usuario", unique=true, nullable=false)
     public Integer getCvsIdUsuario() {
         return this.cvsIdUsuario;
@@ -52,6 +69,15 @@ public class CvsUsuario  implements java.io.Serializable {
     
     public void setCvsIdUsuario(Integer cvsIdUsuario) {
         this.cvsIdUsuario = cvsIdUsuario;
+=======
+    @Column(name="cvs_idcodigo", unique=true, nullable=false)
+    public int getCvsIdcodigo() {
+        return this.cvsIdcodigo;
+    }
+    
+    public void setCvsIdcodigo(int cvsIdcodigo) {
+        this.cvsIdcodigo = cvsIdcodigo;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     }
 
     
@@ -96,16 +122,28 @@ public class CvsUsuario  implements java.io.Serializable {
 
     
     @Column(name="cvs_ativo")
+<<<<<<< HEAD
     public Integer getCvsAtivo() {
         return this.cvsAtivo;
     }
     
     public void setCvsAtivo(Integer cvsAtivo) {
+=======
+    public int getCvsAtivo() {
+        return this.cvsAtivo;
+    }
+    
+    public void setCvsAtivo(int cvsAtivo) {
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
         this.cvsAtivo = cvsAtivo;
     }
 
     
+<<<<<<< HEAD
     @Column(name="cvs_cpf", length=14)
+=======
+    @Column(name="cvs_cpf", length=11)
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     public String getCvsCpf() {
         return this.cvsCpf;
     }

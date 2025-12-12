@@ -1,5 +1,9 @@
 package bean;
+<<<<<<< HEAD
 // Generated 09/12/2025 21:39:33 by Hibernate Tools 4.3.1
+=======
+// Generated 07/10/2025 20:07:58 by Hibernate Tools 4.3.1
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
 
 import java.util.Date;
@@ -26,7 +30,11 @@ import javax.persistence.TemporalType;
 public class CvsClientes  implements java.io.Serializable {
 
 
+<<<<<<< HEAD
      private Integer cvsIdCliente;
+=======
+     private int cvsIdCliente;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
      private String cvsIdNome;
      private String cvsEmail;
      private String cvsCidade;
@@ -37,16 +45,27 @@ public class CvsClientes  implements java.io.Serializable {
      private String cvsSexo;
      private Date cvsDataCadastro;
      private String cvsCpf;
+<<<<<<< HEAD
      private String cvsEstado;
      private String cvsCep;
      private String cvsBairro;
      private String cvsNacionalidade;
      private Set cvsVendases = new HashSet(0);
+=======
+     private String cvsEstdado;
+     private String cvsCep;
+     private String cvsBairro;
+     private String cvsNacionalidade;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
     public CvsClientes() {
     }
 
+<<<<<<< HEAD
     public CvsClientes(String cvsIdNome, String cvsEmail, String cvsCidade, String cvsRg, Date cvsDataNascimento, String cvsTelefone, String cvsEndereco, String cvsSexo, Date cvsDataCadastro, String cvsCpf, String cvsEstado, String cvsCep, String cvsBairro, String cvsNacionalidade, Set cvsVendases) {
+=======
+    public CvsClientes(String cvsIdNome, String cvsEmail, String cvsCidade, String cvsRg, Date cvsDataNascimento, String cvsTelefone, String cvsEndereco, String cvsSexo, Date cvsDataCadastro, String cvsCpf, String cvsEstdado, String cvsCep, String cvsBairro, String cvsNacionalidade) {
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
        this.cvsIdNome = cvsIdNome;
        this.cvsEmail = cvsEmail;
        this.cvsCidade = cvsCidade;
@@ -57,22 +76,37 @@ public class CvsClientes  implements java.io.Serializable {
        this.cvsSexo = cvsSexo;
        this.cvsDataCadastro = cvsDataCadastro;
        this.cvsCpf = cvsCpf;
+<<<<<<< HEAD
        this.cvsEstado = cvsEstado;
        this.cvsCep = cvsCep;
        this.cvsBairro = cvsBairro;
        this.cvsNacionalidade = cvsNacionalidade;
        this.cvsVendases = cvsVendases;
+=======
+       this.cvsEstdado = cvsEstdado;
+       this.cvsCep = cvsCep;
+       this.cvsBairro = cvsBairro;
+       this.cvsNacionalidade = cvsNacionalidade;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="cvs_id_cliente", unique=true, nullable=false)
+<<<<<<< HEAD
     public Integer getCvsIdCliente() {
         return this.cvsIdCliente;
     }
     
     public void setCvsIdCliente(Integer cvsIdCliente) {
+=======
+    public int getCvsIdCliente() {
+        return this.cvsIdCliente;
+    }
+    
+    public void setCvsIdCliente(int cvsIdCliente) {
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
         this.cvsIdCliente = cvsIdCliente;
     }
 
@@ -177,6 +211,7 @@ public class CvsClientes  implements java.io.Serializable {
     }
 
     
+<<<<<<< HEAD
     @Column(name="cvs_estado", length=2)
     public String getCvsEstado() {
         return this.cvsEstado;
@@ -184,6 +219,15 @@ public class CvsClientes  implements java.io.Serializable {
     
     public void setCvsEstado(String cvsEstado) {
         this.cvsEstado = cvsEstado;
+=======
+    @Column(name="cvs_estdado", length=2)
+    public String getCvsEstdado() {
+        return this.cvsEstdado;
+    }
+    
+    public void setCvsEstdado(String cvsEstdado) {
+        this.cvsEstdado = cvsEstdado;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     }
 
     
@@ -207,7 +251,11 @@ public class CvsClientes  implements java.io.Serializable {
     }
 
     
+<<<<<<< HEAD
     @Column(name="cvs_nacionalidade", length=50)
+=======
+    @Column(name="cvs-nacionalidade", length=50)
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     public String getCvsNacionalidade() {
         return this.cvsNacionalidade;
     }
@@ -216,6 +264,7 @@ public class CvsClientes  implements java.io.Serializable {
         this.cvsNacionalidade = cvsNacionalidade;
     }
 
+<<<<<<< HEAD
 @OneToMany(fetch=FetchType.LAZY, mappedBy="cvsClientes")
     public Set getCvsVendases() {
         return this.cvsVendases;
@@ -224,6 +273,9 @@ public class CvsClientes  implements java.io.Serializable {
     public void setCvsVendases(Set cvsVendases) {
         this.cvsVendases = cvsVendases;
     }
+=======
+
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
 
 

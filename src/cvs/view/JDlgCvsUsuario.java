@@ -1,6 +1,9 @@
 package cvs.view;
 
+<<<<<<< HEAD
 import bean.CvsUsuario;
+=======
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 import tools.Util;
 
 
@@ -39,6 +42,7 @@ boolean pesquisando = false;
         jBtnCvsCancelar
     );
 }
+<<<<<<< HEAD
  
  public CvsUsuario viewBean() {
         CvsUsuario cvsUsuario = new CvsUsuario();
@@ -77,6 +81,8 @@ boolean pesquisando = false;
 
     }
  
+=======
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

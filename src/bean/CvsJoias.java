@@ -1,8 +1,14 @@
 package bean;
+<<<<<<< HEAD
 // Generated 09/12/2025 21:39:33 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
+=======
+// Generated 07/10/2025 20:07:58 by Hibernate Tools 4.3.1
+
+
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -24,6 +30,7 @@ import javax.persistence.Table;
 public class CvsJoias  implements java.io.Serializable {
 
 
+<<<<<<< HEAD
      private Integer cvsIdJoias;
      private BigDecimal cvsPeso;
      private String cvsNome;
@@ -32,23 +39,40 @@ public class CvsJoias  implements java.io.Serializable {
      private String cvsDescricao;
      private String cvsMaterial;
      private Set cvsVendasjoiases = new HashSet(0);
+=======
+     private int cvsIdCodigo;
+     private double cvsPeso;
+     private String cvsNome;
+     private double cvsPreco;
+     private String cvsTipo;
+     private String cvsDescricao;
+     private String cvsMaterial;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
     public CvsJoias() {
     }
 
+<<<<<<< HEAD
     public CvsJoias(BigDecimal cvsPeso, String cvsNome, BigDecimal cvsPreco, String cvsTipo, String cvsDescricao, String cvsMaterial, Set cvsVendasjoiases) {
+=======
+    public CvsJoias(double cvsPeso, String cvsNome, double cvsPreco, String cvsTipo, String cvsDescricao, String cvsMaterial) {
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
        this.cvsPeso = cvsPeso;
        this.cvsNome = cvsNome;
        this.cvsPreco = cvsPreco;
        this.cvsTipo = cvsTipo;
        this.cvsDescricao = cvsDescricao;
        this.cvsMaterial = cvsMaterial;
+<<<<<<< HEAD
        this.cvsVendasjoiases = cvsVendasjoiases;
+=======
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
+<<<<<<< HEAD
     @Column(name="cvs_id_joias", unique=true, nullable=false)
     public Integer getCvsIdJoias() {
         return this.cvsIdJoias;
@@ -56,15 +80,32 @@ public class CvsJoias  implements java.io.Serializable {
     
     public void setCvsIdJoias(Integer cvsIdJoias) {
         this.cvsIdJoias = cvsIdJoias;
+=======
+    @Column(name="cvs_id_codigo", unique=true, nullable=false)
+    public int getCvsIdCodigo() {
+        return this.cvsIdCodigo;
+    }
+    
+    public void setCvsIdCodigo(int cvsIdCodigo) {
+        this.cvsIdCodigo = cvsIdCodigo;
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     }
 
     
     @Column(name="cvs_peso", precision=10)
+<<<<<<< HEAD
     public BigDecimal getCvsPeso() {
         return this.cvsPeso;
     }
     
     public void setCvsPeso(BigDecimal cvsPeso) {
+=======
+    public double getCvsPeso() {
+        return this.cvsPeso;
+    }
+    
+    public void setCvsPeso(double cvsPeso) {
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
         this.cvsPeso = cvsPeso;
     }
 
@@ -80,11 +121,19 @@ public class CvsJoias  implements java.io.Serializable {
 
     
     @Column(name="cvs_preco", precision=10)
+<<<<<<< HEAD
     public BigDecimal getCvsPreco() {
         return this.cvsPreco;
     }
     
     public void setCvsPreco(BigDecimal cvsPreco) {
+=======
+    public double getCvsPreco() {
+        return this.cvsPreco;
+    }
+    
+    public void setCvsPreco(double cvsPreco) {
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
         this.cvsPreco = cvsPreco;
     }
 
@@ -99,7 +148,11 @@ public class CvsJoias  implements java.io.Serializable {
     }
 
     
+<<<<<<< HEAD
     @Column(name="cvs_descricao", length=50)
+=======
+    @Column(name="cvs_descricao", length=65535)
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
     public String getCvsDescricao() {
         return this.cvsDescricao;
     }
@@ -118,6 +171,7 @@ public class CvsJoias  implements java.io.Serializable {
         this.cvsMaterial = cvsMaterial;
     }
 
+<<<<<<< HEAD
 @OneToMany(fetch=FetchType.LAZY, mappedBy="cvsJoias")
     public Set getCvsVendasjoiases() {
         return this.cvsVendasjoiases;
@@ -126,6 +180,9 @@ public class CvsJoias  implements java.io.Serializable {
     public void setCvsVendasjoiases(Set cvsVendasjoiases) {
         this.cvsVendasjoiases = cvsVendasjoiases;
     }
+=======
+
+>>>>>>> 2dfacaf3e419345d3e623761ad0a9212d7fceed1
 
 
 
