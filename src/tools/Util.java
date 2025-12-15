@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -36,9 +35,7 @@ public class Util {
             if (componentes[i] instanceof JComboBox) {
                 ((JComboBox) componentes[i]).setSelectedIndex(-1);
             }
-            if (componentes[i] instanceof JCheckBox) {
-                ((JCheckBox) componentes[i]).setSelected(false);
-            }
+
         }
 
     }

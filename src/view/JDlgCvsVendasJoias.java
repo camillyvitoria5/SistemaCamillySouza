@@ -5,12 +5,6 @@
  */
 package view;
 
-import bean.CvsJoias;
-import bean.CvsVendasjoias;
-import dao.CvsJoiasDAO;
-import java.util.List;
-import tools.Util;
-
 /**
  *
  * @author u1845853
@@ -20,44 +14,10 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
     /**
      * Creates new form JDlgPedidosProdutos
      */
-    JDlgCvsVendas jDlgVendas;
-
     public JDlgCvsVendasJoias(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        
-        Util.habilitar(false, jTxtValor, jTxtTotal);
-        
-        CvsJoiasDAO cvsJoiasDAO = new CvsJoiasDAO();
-        List listaJoias = (List) cvsJoiasDAO.listAll();
-        for (int i = 0; i < listaJoias.size(); i++) {
-            jCboJoias.addItem((CvsJoias) listaJoias.get(i));
-        }
-
-    }
-
-    public void setTelaPai(JDlgCvsVendas jDlgVendas) {
-        this.jDlgVendas = jDlgVendas;
-    }
-
-    private CvsVendasjoias viewbean() {
-        CvsVendasjoias cvsVendasjoias = new CvsVendasjoias();
-
-        CvsJoias cvsJoias = (CvsJoias) jCboJoias.getSelectedItem();
-        cvsVendasjoias.setCvsJoias(cvsJoias);
-        cvsVendasjoias.setCvsIdVendasJoias(0);
-        cvsVendasjoias.setCvsQuant(Util.strToInt(jTxtQuant.getText()));
-        cvsVendasjoias.setCvsValorUnidade(Util.strToDouble(jTxtValor.getText()));
-
-        return cvsVendasjoias;
-
-    }
-
-    public void beanview(CvsVendasjoias cvsVendasjoias) {
-        jCboJoias.setSelectedItem(cvsVendasjoias.getCvsJoias());
-        jTxtQuant.setText(Util.intToStr(cvsVendasjoias.getCvsQuant()));
-        jTxtValor.setText(Util.doubleToStr(cvsVendasjoias.getCvsValorUnidade()));
     }
 
     /**
@@ -70,13 +30,13 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jCboJoias = new javax.swing.JComboBox<CvsJoias>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
-        jTxtQuant = new javax.swing.JTextField();
-        jTxtValor = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTxtTotal = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jBtnOk = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
 
@@ -84,24 +44,13 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
 
         jLabel1.setText("Produtos");
 
-        jCboJoias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCboJoiasActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Quantidade");
-
-        jTxtQuant.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTxtQuantKeyReleased(evt);
-            }
-        });
 
         jLabel3.setText("Valor Unitário");
 
         jLabel4.setText("Total");
 
+        jBtnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/confirmar.png"))); // NOI18N
         jBtnOk.setText("Ok");
         jBtnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +58,7 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
             }
         });
 
+        jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
         jBtnCancelar.setText("Cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,19 +78,19 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
-                                .addComponent(jTxtQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
-                                .addComponent(jTxtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(35, 35, 35)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
-                                .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jCboJoias, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jBtnOk)
+                            .addGap(37, 37, 37)
                             .addComponent(jBtnCancelar))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -150,28 +100,28 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCboJoias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtQuant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnCancelar)
-                    .addComponent(jBtnOk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBtnOk)
+                    .addComponent(jBtnCancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -180,13 +130,6 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-        if (viewbean().getCvsQuant()== 0) {
-            Util.mensagem("Quantidade não pode ser 0");
-            jTxtQuant.grabFocus();
-        } else {
-            jDlgVendas.controllerCvsVendasJoias.addBean(viewbean());
-            this.dispose();
-        }
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
@@ -194,26 +137,6 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
-
-    private void jCboJoiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboJoiasActionPerformed
-        // TODO add your handling code here:
-        CvsJoias cvsJoias = (CvsJoias) jCboJoias.getSelectedItem();
-        jTxtValor.setText(Util.doubleToStr(cvsJoias.getCvsPreco()));
-        jTxtTotal.setText(Util.doubleToStr(cvsJoias.getCvsPreco()));
-        jTxtQuant.setText("1");
-    }//GEN-LAST:event_jCboJoiasActionPerformed
-
-    private void jTxtQuantKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtQuantKeyReleased
-        // TODO add your handling code here:
-        if (jTxtQuant.getText().equals("")) {
-            jTxtTotal.setText("0");
-        } else {
-            int qtd = Util.strToInt(jTxtQuant.getText());
-            double unitario = Util.strToDouble(jTxtValor.getText());
-            double total = qtd * unitario;
-            jTxtTotal.setText(Util.doubleToStr(total));
-        }
-    }//GEN-LAST:event_jTxtQuantKeyReleased
 
     /**
      * @param args the command line arguments
@@ -267,13 +190,13 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnOk;
-    private javax.swing.JComboBox<CvsJoias> jCboJoias;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTxtQuant;
-    private javax.swing.JTextField jTxtTotal;
-    private javax.swing.JTextField jTxtValor;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

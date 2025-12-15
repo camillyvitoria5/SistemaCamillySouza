@@ -3,36 +3,25 @@ package view;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-
-import bean.CvsUsuario;
-import dao.CvsUsuarioDAO;
 import java.util.List;
-
 /**
  *
  * @author amand
  */
 public class JDlgCvsUsuarioPesquisar extends javax.swing.JDialog {
-
+    
     JDlgCvsUsuario jDlgCvsUsuario;
-    ControllerCvsUsuario controllerCvsUsuario;
 
     JDlgCvsUsuarioPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-
-        CvsUsuarioDAO cvsUsuarioDAO = new CvsUsuarioDAO();
-        List lista = (List) cvsUsuarioDAO.listAll();
-        controllerCvsUsuario = new ControllerCvsUsuario();
-        controllerCvsUsuario.setList(lista);
-        jTable1.setModel(controllerCvsUsuario);
     }
-
-    public void setTelaPai(JDlgCvsUsuario jDlgCvsUsuario) {
+    
+    public void setTelaPai(JDlgCvsUsuario jDlgCvsUsuario){
         this.jDlgCvsUsuario = jDlgCvsUsuario;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,11 +49,6 @@ public class JDlgCvsUsuarioPesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(jTable1);
 
         jBtnCvsOkUsua.setText("OK");
@@ -87,25 +71,25 @@ public class JDlgCvsUsuarioPesquisar extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBtnCvsOkUsua, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBtnCvsOkUsua)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnCancelar)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnCvsOkUsua)
+                    .addComponent(jBtnCvsOkUsua, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnCancelar))
-                .addGap(19, 19, 19))
+                .addContainerGap())
         );
 
         pack();
@@ -113,9 +97,6 @@ public class JDlgCvsUsuarioPesquisar extends javax.swing.JDialog {
 
     private void jBtnCvsOkUsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsOkUsuaActionPerformed
         // TODO add your handling code here:
-        int linSel = jTable1.getSelectedRow();
-        CvsUsuario cvsUsuario = (CvsUsuario) controllerCvsUsuario.getBean(linSel);
-        jDlgCvsUsuario.beanView(cvsUsuario);
         setVisible(false);
     }//GEN-LAST:event_jBtnCvsOkUsuaActionPerformed
 
@@ -123,13 +104,6 @@ public class JDlgCvsUsuarioPesquisar extends javax.swing.JDialog {
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-        if(evt.getClickCount()>=2 && jTable1.getSelectedRow()!=-1){
-            jBtnCvsOkUsuaActionPerformed(null);
-        }
-    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -159,6 +133,7 @@ public class JDlgCvsUsuarioPesquisar extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -168,4 +143,5 @@ public class JDlgCvsUsuarioPesquisar extends javax.swing.JDialog {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
+   
 }

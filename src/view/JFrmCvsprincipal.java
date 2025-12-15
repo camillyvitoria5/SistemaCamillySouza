@@ -5,6 +5,7 @@ package view;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 /**
  *
  * @author user
@@ -15,8 +16,9 @@ public class JFrmCvsprincipal extends javax.swing.JFrame {
      * Creates new form jFrameprincipal
      */
     public JFrmCvsprincipal() {
+        
         initComponents();
-        this.setExtendedState(JFrmCvsprincipal.MAXIMIZED_BOTH);
+            this.setExtendedState(JFrmCvsprincipal.MAXIMIZED_BOTH);
     }
 
     /**
@@ -137,7 +139,7 @@ public class JFrmCvsprincipal extends javax.swing.JFrame {
 
     private void jDlgSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDlgSairActionPerformed
         // TODO add your handling code here:
-        dispose();
+         dispose();
     }//GEN-LAST:event_jDlgSairActionPerformed
 
     private void jMenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioActionPerformed

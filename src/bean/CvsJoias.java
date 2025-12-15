@@ -110,20 +110,4 @@ public class CvsJoias  implements java.io.Serializable {
     public void setCvsMaterial(String cvsMaterial) {
         this.cvsMaterial = cvsMaterial;
     }
-
-    @Override
-    public String toString() {
-        return this.getCvsNome();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof CvsJoias) {
-            CvsJoias o = (CvsJoias) obj;
-            if (o.getCvsIdJoias()== this.getCvsIdJoias()) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

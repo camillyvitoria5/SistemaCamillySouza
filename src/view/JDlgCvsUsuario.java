@@ -68,7 +68,7 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
         } else {
             cvsUsuario.setCvsAtivo(0);
         }
-        cvsUsuario.setCvsCpf(jFmtCvsCpf.getText());
+        System.out.println(cvsUsuario);
         return cvsUsuario;
     }
 
@@ -84,20 +84,6 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
         } else {
             jChbCvsAtivo.setSelected(false);
         }
-    }
-
-    public void habilitar(boolean status) {
-        if (status) {
-            Util.habilitar(true, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-            Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
-        } else {
-            Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-            Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
-        }
-    }
-
-    public void limparCampos() {
-        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
     }
 
     /**
@@ -164,7 +150,6 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
 
         jLblCvsAtivo.setText("Ativo:");
 
-        jBtnCvsCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         jBtnCvsCancelar.setText("Cancelar");
         jBtnCvsCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +157,6 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
             }
         });
 
-        jBtnCvsPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
         jBtnCvsPesquisar.setText("Pesquisar");
         jBtnCvsPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +164,6 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
             }
         });
 
-        jBtnCvsIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incluir.png"))); // NOI18N
         jBtnCvsIncluir.setText("Incluir");
         jBtnCvsIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,7 +171,6 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
             }
         });
 
-        jBtnCvsAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
         jBtnCvsAlterar.setText("Alterar");
         jBtnCvsAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +178,6 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
             }
         });
 
-        jBtnCvsExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Excluir.png"))); // NOI18N
         jBtnCvsExcluir.setText("Excluir");
         jBtnCvsExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,7 +185,6 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
             }
         });
 
-        jBtnCvsConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gravar.png"))); // NOI18N
         jBtnCvsConfirmar.setText("Confirmar");
         jBtnCvsConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,7 +274,7 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jChbCvsAtivo)
                     .addComponent(jPwdCvsSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnCvsIncluir)
                     .addComponent(jBtnCvsAlterar)
@@ -318,8 +298,9 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
 
     private void jBtnCvsIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsIncluirActionPerformed
         // TODO add your handling code here:
-        habilitar(true);
-        limparCampos();
+        Util.habilitar(true, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+        Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
         jTxtCvsCodigo.grabFocus();
         incluir = true;
     }//GEN-LAST:event_jBtnCvsIncluirActionPerformed
@@ -330,21 +311,24 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
 
     private void jBtnCvsConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsConfirmarActionPerformed
         // TODO add your  handling code here:
-
+        
         CvsUsuarioDAO cvsUsuariosDAO = new CvsUsuarioDAO();
         if (incluir == true) {
             cvsUsuariosDAO.insert(viewBean());
         } else {
             cvsUsuariosDAO.update(viewBean());
         }
-        limparCampos();
-        habilitar(false);
+        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
+        Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+        Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+        
     }//GEN-LAST:event_jBtnCvsConfirmarActionPerformed
 
     private void jBtnCvsCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsCancelarActionPerformed
         // TODO add your handling code here:
-        habilitar(false);
-        limparCampos();
+        Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+        Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
     }//GEN-LAST:event_jBtnCvsCancelarActionPerformed
 
     private void jBtnCvsExcluirActionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,7 +340,7 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
                 CvsUsuarioDAO cvsUsuariosDAO = new CvsUsuarioDAO();
                 cvsUsuariosDAO.delete(viewBean());
             }
-            limparCampos();
+            Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
         }
     }
 

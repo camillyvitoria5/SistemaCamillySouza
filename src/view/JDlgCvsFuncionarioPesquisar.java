@@ -1,38 +1,34 @@
 package view;
-
-import bean.CvsFuncionarios;
-import dao.CvsFuncionarioDAO;
 import java.util.List;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
+
 /**
  *
  * @author amand
  */
 public class JDlgCvsFuncionarioPesquisar extends javax.swing.JDialog {
-
     JDlgCvsFuncionario jdlgFuncionario;
-    ControllerCvsFuncionario controllerCvsFuncionario;
-
+    
     public JDlgCvsFuncionarioPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-
-        CvsFuncionarioDAO cvsFuncionarioDAO = new CvsFuncionarioDAO();
-        List lista = (List) cvsFuncionarioDAO.listAll();
-        controllerCvsFuncionario = new ControllerCvsFuncionario();
-        controllerCvsFuncionario.setList(lista);
-        jTable1.setModel(controllerCvsFuncionario);
+        //cdc_vendedorDAO vendedorDAO = new cdc_vendedorDAO();
+        //List lista = (List) vendedorDAO.listAll();
+        //controllerVendedor = new Cdc_ControllerVendedor();
+        //controllerVendedor.setList(lista);
+        //jTable1.setModel(controllerVendedor);
 
     }
-
-    public void setTelaPai(JDlgCvsFuncionario jdlgFuncionario) {
+    
+    public void setTelaPai(JDlgCvsFuncionario jdlgFuncionario){
         this.jdlgFuncionario = jdlgFuncionario;
     }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,8 +41,7 @@ public class JDlgCvsFuncionarioPesquisar extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jBtnCvsOkUsua = new javax.swing.JButton();
-        jBtnCancelar = new javax.swing.JButton();
+        jBtnCvsOkFuncio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,24 +56,12 @@ public class JDlgCvsFuncionarioPesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(jTable1);
 
-        jBtnCvsOkUsua.setText("OK");
-        jBtnCvsOkUsua.addActionListener(new java.awt.event.ActionListener() {
+        jBtnCvsOkFuncio.setText("OK");
+        jBtnCvsOkFuncio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnCvsOkUsuaActionPerformed(evt);
-            }
-        });
-
-        jBtnCancelar.setText("Cancelar");
-        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnCancelarActionPerformed(evt);
+                jBtnCvsOkFuncioActionPerformed(evt);
             }
         });
 
@@ -88,49 +71,28 @@ public class JDlgCvsFuncionarioPesquisar extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBtnCvsOkUsua, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jBtnCvsOkFuncio)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnCvsOkUsua)
-                    .addComponent(jBtnCancelar))
-                .addGap(19, 19, 19))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jBtnCvsOkFuncio)
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnCvsOkUsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsOkUsuaActionPerformed
+    private void jBtnCvsOkFuncioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsOkFuncioActionPerformed
         // TODO add your handling code here:
-        int linSel = jTable1.getSelectedRow();
-        CvsFuncionarios cvsFuncionarios = (CvsFuncionarios) controllerCvsFuncionario.getBean(linSel);
-        jdlgFuncionario.beanView(cvsFuncionarios);
-        setVisible(false);
-    }//GEN-LAST:event_jBtnCvsOkUsuaActionPerformed
-
-    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-    }//GEN-LAST:event_jBtnCancelarActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-        if(evt.getClickCount()>=2 && jTable1.getSelectedRow()!=-1){
-            jBtnCvsOkUsuaActionPerformed(null);
-        }
-    }//GEN-LAST:event_jTable1MouseClicked
+       setVisible(false);
+    }//GEN-LAST:event_jBtnCvsOkFuncioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,11 +122,11 @@ public class JDlgCvsFuncionarioPesquisar extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnCancelar;
-    private javax.swing.JButton jBtnCvsOkUsua;
+    private javax.swing.JButton jBtnCvsOkFuncio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

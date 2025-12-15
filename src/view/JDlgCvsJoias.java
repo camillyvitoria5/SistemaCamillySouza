@@ -30,7 +30,7 @@ public class JDlgCvsJoias extends javax.swing.JDialog {
         initComponents();
         setTitle("Cadastro de Jóias");
         setLocationRelativeTo(null);
-        habilitar(false);
+        Util.habilitar(false, jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jBtnCvsConfirmar, jBtnCvsCancelar, jTxtCvsPeso, jTxtDescricao, jTxtPreco);
     }
 
     public CvsJoias viewBean() {
@@ -55,20 +55,6 @@ public class JDlgCvsJoias extends javax.swing.JDialog {
         jTxtDescricao.setText(joia.getCvsDescricao());
         jTxtCvsPeso.setText(Util.doubleToStr(joia.getCvsPeso()));
         jTxtPreco.setText(Util.doubleToStr(joia.getCvsPreco()));
-    }
-
-    public void habilitar(boolean status) {
-        if (status) {
-            Util.habilitar(true, jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jTxtDescricao, jTxtCvsPeso, jTxtPreco, jBtnCvsConfirmar, jBtnCvsCancelar);
-            Util.habilitar(false, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
-        } else {
-            Util.habilitar(false, jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jTxtDescricao, jTxtCvsPeso, jTxtPreco, jBtnCvsConfirmar, jBtnCvsCancelar);
-            Util.habilitar(true, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
-        }
-    }
-
-    public void limparCampos() {
-        Util.limpar(jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jTxtDescricao, jTxtCvsPeso, jTxtPreco);
     }
 
     @SuppressWarnings("unchecked")
@@ -284,14 +270,15 @@ public class JDlgCvsJoias extends javax.swing.JDialog {
 
     private void jBtnCvsConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsConfirmarActionPerformed
         // TODO add your handling code here:
-        habilitar(false);
+        Util.habilitar(false, jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jTxtDescricao, jTxtCvsPeso, jTxtPreco, jBtnCvsConfirmar, jBtnCvsCancelar);
+        Util.habilitar(true, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
         CvsJoiasDAO cvsJoiasDAO = new CvsJoiasDAO();
         if (incluir == true) {
             cvsJoiasDAO.insert(viewBean());
         } else {
             cvsJoiasDAO.update(viewBean());
         }
-        limparCampos();
+        Util.limpar(jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jTxtDescricao, jTxtCvsPeso, jTxtPreco);
     }//GEN-LAST:event_jBtnCvsConfirmarActionPerformed
 
     private void jBtnCvsExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsExcluirActionPerformed
@@ -303,13 +290,13 @@ public class JDlgCvsJoias extends javax.swing.JDialog {
                 CvsJoiasDAO cvsJoiasDAO = new CvsJoiasDAO();
                 cvsJoiasDAO.delete(viewBean());
             }
-            limparCampos();
+            Util.limpar(jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jTxtDescricao, jTxtCvsPeso, jTxtPreco);
         }
     }//GEN-LAST:event_jBtnCvsExcluirActionPerformed
 
     private void jBtnCvsAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsAlterarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtCvsNome, jTxtCvsTipo, jFmtCvsMaterial, jBtnCvsConfirmar, jBtnCvsCancelar, jTxtCvsPeso, jTxtDescricao, jTxtPreco);
+        Util.habilitar(true, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jBtnCvsConfirmar, jBtnCvsCancelar, jTxtCvsPeso, jTxtDescricao, jTxtPreco);
         Util.habilitar(false, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
         incluir = false;
         jTxtCvsNome.grabFocus();
@@ -317,15 +304,16 @@ public class JDlgCvsJoias extends javax.swing.JDialog {
 
     private void jBtnCvsIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsIncluirActionPerformed
         // TODO add your handling code here:
-        habilitar(true);
-        limparCampos();
-        incluir = true;
+        Util.habilitar(true, jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jBtnCvsConfirmar, jBtnCvsCancelar, jTxtCvsPeso, jTxtDescricao, jTxtPreco);
+        Util.habilitar(false, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
+        Util.limpar(jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jTxtDescricao, jTxtCvsPeso, jTxtPreco);
     }//GEN-LAST:event_jBtnCvsIncluirActionPerformed
 
     private void jBtnCvsCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsCancelarActionPerformed
         // TODO add your handling code here:
-        habilitar(false);
-        limparCampos();
+        Util.habilitar(false, jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jBtnCvsConfirmar, jBtnCvsCancelar, jTxtCvsPeso, jTxtDescricao, jTxtPreco);
+        Util.habilitar(true, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
+        Util.limpar(jTxtCvsNome, jTxtCvsCodigo, jTxtCvsTipo, jFmtCvsMaterial, jTxtDescricao, jTxtCvsPeso, jTxtPreco);
     }//GEN-LAST:event_jBtnCvsCancelarActionPerformed
 
     private void jBtnCvsPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsPesquisarActionPerformed
