@@ -1,9 +1,6 @@
 package cvs.view;
 
 import bean.CvsUsuario;
-import java.text.ParseException;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 
@@ -12,6 +9,7 @@ import tools.Util;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 //package view;
+
 /**
  *
  * @author marcos
@@ -21,39 +19,28 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
     /**
      * Creates new form JDlgUsuario
      */
-    boolean pesquisando = false;
+  
+boolean pesquisando = false;
 
-    public JDlgCvsUsuario(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        setTitle("Cadastro de Usuários");
-        setLocationRelativeTo(null);
-        Util.habilitar(false,
-                jTxtCvsCodigo,
-                jTxtCvsNome,
-                jTxtCvsApelido,
-                jFmtCvsCpf,
-                jFmtCvsDataNasc,
-                jPwdCvsSenha,
-                jChbCvsAtivo,
-                jBtnCvsConfirmar,
-                jBtnCvsCancelar
-        );
-        try {
-            MaskFormatter mascara = new MaskFormatter("###.###.###-##");
-            jFmtCvsCpf.setFormatterFactory(new DefaultFormatterFactory(mascara));
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        try {
-            MaskFormatter mascara = new MaskFormatter("##/##/####");
-            jFmtCvsDataNasc.setFormatterFactory(new DefaultFormatterFactory(mascara));
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public CvsUsuario viewBean() {
+ public JDlgCvsUsuario (java.awt.Frame parent, boolean modal) {
+    super(parent, modal);
+    initComponents();
+    setTitle("Cadastro de Usuários");
+    setLocationRelativeTo(null);
+    Util.habilitar(false,
+        jTxtCvsCodigo,
+        jTxtCvsNome,
+        jTxtCvsApelido,
+        jFmtCvsCpf,
+        jFmtCvsDataNasc,
+        jPwdCvsSenha,
+        jChbCvsAtivo,
+        jBtnCvsConfirmar,
+        jBtnCvsCancelar
+    );
+}
+ 
+ public CvsUsuario viewBean() {
         CvsUsuario cvsUsuario = new CvsUsuario();
         cvsUsuario.setCvsIdUsuario(Util.strToInt(jTxtCvsCodigo.getText()));
         cvsUsuario.setCvsNome(jTxtCvsNome.getText());
@@ -61,29 +48,35 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
         cvsUsuario.setCvsSenha(jFmtCvsCpf.getText());
         cvsUsuario.setCvsDataNascimento(Util.strToDate(jFmtCvsDataNasc.getText()));
         cvsUsuario.setCvsSenha(jPwdCvsSenha.getText());
+
         if (jChbCvsAtivo.isSelected()) {
             cvsUsuario.setCvsAtivo(1);
         } else {
             cvsUsuario.setCvsAtivo(0);
         }
+
         System.out.println(cvsUsuario);
+        
         return cvsUsuario;
+
     }
 
-    public void beanView(CvsUsuario cvsUsuario) {
-        jTxtCvsCodigo.setText(Util.intToStr(cvsUsuario.getCvsIdUsuario()));
-        jTxtCvsNome.setText(cvsUsuario.getCvsNome());
-        jTxtCvsApelido.setText(cvsUsuario.getCvsApelido());
-        jFmtCvsCpf.setText(cvsUsuario.getCvsCpf());
-        jFmtCvsDataNasc.setText(Util.dateToStr(cvsUsuario.getCvsDataNascimento()));
-        jPwdCvsSenha.setText(cvsUsuario.getCvsSenha());
-        if (cvsUsuario.getCvsAtivo()==1) {
-            jChbCvsAtivo.setSelected(true);
+    public void beanView(Usuarios usuarios) {
+        jTxtCodigo.setText(Util.intToStr(usuarios.getIaaIdUsuarios()));
+        jTxtNome.setText(usuarios.getIaaNome());
+        jTxtApelido.setText(usuarios.getIaaApelido());
+        jFmtCpf.setText(usuarios.getIaaCpf());
+        jFmtDataDeNascimento.setText(Util.dateToStr(usuarios.getIaaDataNascimento()));
+        jPwdSenha.setText(usuarios.getIaaSenha());
+        jCboNivel.setSelectedIndex(usuarios.getIaaNivel());
+        if (usuarios.getIaaAtivo().equals("S")) {
+            jChbAtivo.setSelected(true);
         } else {
-            jChbCvsAtivo.setSelected(false);
+            jChbAtivo.setSelected(false);
         }
-    }
 
+    }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -230,6 +223,7 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
                         .addGap(49, 49, 49))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jFmtCvsDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLblCvsApelido)
                                 .addComponent(jTxtCvsApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,8 +237,7 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
                                             .addGap(6, 6, 6)
                                             .addComponent(jChbCvsAtivo))
                                         .addComponent(jLblCvsAtivo)))
-                                .addComponent(jFmtCvsCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jFmtCvsDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jFmtCvsCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -302,9 +295,9 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
 
     private void jBtnCvsIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsIncluirActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-        Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
-        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha);
+       Util.habilitar(true, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+       Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+       Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha);
 
     }//GEN-LAST:event_jBtnCvsIncluirActionPerformed
 
@@ -314,32 +307,34 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
 
     private void jBtnCvsConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsConfirmarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-        Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+       Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+       Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);  
     }//GEN-LAST:event_jBtnCvsConfirmarActionPerformed
 
     private void jBtnCvsCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsCancelarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-        Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+       Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+       Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
 
     }//GEN-LAST:event_jBtnCvsCancelarActionPerformed
 
-    private void jBtnCvsExcluirActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jBtnCvsExcluirActionPerformed(java.awt.event.ActionEvent evt) {                                               
 // TODO add your handling code here:
         if (pesquisando == false) {
             Util.mensagem("Você precisa pesquisar um usuário primeiro");
         } else {
-            Util.perguntar("Você deseja excluir?");
-            Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
+                Util.perguntar("Você deseja excluir?");
+                Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);  
         }
 
-    }
+
+
+}
 
          private void jBtnCvsAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsAlterarActionPerformed
-             // TODO add your handling code here:
-             Util.habilitar(true, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-             Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+        // TODO add your handling code here:
+     Util.habilitar(true, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+     Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
 
     }//GEN-LAST:event_jBtnCvsAlterarActionPerformed
 
@@ -349,6 +344,7 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
         jDlgCvsUsuarioPesquisar.setTelaPai(this);
         jDlgCvsUsuarioPesquisar.setVisible(true);
         pesquisando = true;
+
 
 
     }//GEN-LAST:event_jBtnCvsPesquisarActionPerformed

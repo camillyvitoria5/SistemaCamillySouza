@@ -2,11 +2,16 @@ package bean;
 // Generated 09/12/2025 21:39:33 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,45 +24,47 @@ import javax.persistence.Table;
 public class CvsJoias  implements java.io.Serializable {
 
 
-     private int cvsIdJoias;
-     private Double cvsPeso;
+     private Integer cvsIdJoias;
+     private BigDecimal cvsPeso;
      private String cvsNome;
-     private Double cvsPreco;
+     private BigDecimal cvsPreco;
      private String cvsTipo;
      private String cvsDescricao;
      private String cvsMaterial;
+     private Set cvsVendasjoiases = new HashSet(0);
 
     public CvsJoias() {
     }
 
-    public CvsJoias(Double cvsPeso, String cvsNome, Double cvsPreco, String cvsTipo, String cvsDescricao, String cvsMaterial) {
+    public CvsJoias(BigDecimal cvsPeso, String cvsNome, BigDecimal cvsPreco, String cvsTipo, String cvsDescricao, String cvsMaterial, Set cvsVendasjoiases) {
        this.cvsPeso = cvsPeso;
        this.cvsNome = cvsNome;
        this.cvsPreco = cvsPreco;
        this.cvsTipo = cvsTipo;
        this.cvsDescricao = cvsDescricao;
        this.cvsMaterial = cvsMaterial;
+       this.cvsVendasjoiases = cvsVendasjoiases;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="cvs_id_joias", unique=true, nullable=false)
-    public int getCvsIdJoias() {
+    public Integer getCvsIdJoias() {
         return this.cvsIdJoias;
     }
     
-    public void setCvsIdJoias(int cvsIdJoias) {
+    public void setCvsIdJoias(Integer cvsIdJoias) {
         this.cvsIdJoias = cvsIdJoias;
     }
 
     
     @Column(name="cvs_peso", precision=10)
-    public Double getCvsPeso() {
+    public BigDecimal getCvsPeso() {
         return this.cvsPeso;
     }
     
-    public void setCvsPeso(Double cvsPeso) {
+    public void setCvsPeso(BigDecimal cvsPeso) {
         this.cvsPeso = cvsPeso;
     }
 
@@ -73,11 +80,11 @@ public class CvsJoias  implements java.io.Serializable {
 
     
     @Column(name="cvs_preco", precision=10)
-    public Double getCvsPreco() {
+    public BigDecimal getCvsPreco() {
         return this.cvsPreco;
     }
     
-    public void setCvsPreco(Double cvsPreco) {
+    public void setCvsPreco(BigDecimal cvsPreco) {
         this.cvsPreco = cvsPreco;
     }
 
@@ -110,4 +117,19 @@ public class CvsJoias  implements java.io.Serializable {
     public void setCvsMaterial(String cvsMaterial) {
         this.cvsMaterial = cvsMaterial;
     }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="cvsJoias")
+    public Set getCvsVendasjoiases() {
+        return this.cvsVendasjoiases;
+    }
+    
+    public void setCvsVendasjoiases(Set cvsVendasjoiases) {
+        this.cvsVendasjoiases = cvsVendasjoiases;
+    }
+
+
+
+
 }
+
+

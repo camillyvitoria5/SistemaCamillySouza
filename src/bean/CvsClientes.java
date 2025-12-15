@@ -3,11 +3,15 @@ package bean;
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,7 +26,7 @@ import javax.persistence.TemporalType;
 public class CvsClientes  implements java.io.Serializable {
 
 
-     private int cvsIdCliente;
+     private Integer cvsIdCliente;
      private String cvsIdNome;
      private String cvsEmail;
      private String cvsCidade;
@@ -37,11 +41,12 @@ public class CvsClientes  implements java.io.Serializable {
      private String cvsCep;
      private String cvsBairro;
      private String cvsNacionalidade;
+     private Set cvsVendases = new HashSet(0);
 
     public CvsClientes() {
     }
 
-    public CvsClientes(String cvsIdNome, String cvsEmail, String cvsCidade, String cvsRg, Date cvsDataNascimento, String cvsTelefone, String cvsEndereco, String cvsSexo, Date cvsDataCadastro, String cvsCpf, String cvsEstado, String cvsCep, String cvsBairro, String cvsNacionalidade) {
+    public CvsClientes(String cvsIdNome, String cvsEmail, String cvsCidade, String cvsRg, Date cvsDataNascimento, String cvsTelefone, String cvsEndereco, String cvsSexo, Date cvsDataCadastro, String cvsCpf, String cvsEstado, String cvsCep, String cvsBairro, String cvsNacionalidade, Set cvsVendases) {
        this.cvsIdNome = cvsIdNome;
        this.cvsEmail = cvsEmail;
        this.cvsCidade = cvsCidade;
@@ -56,17 +61,18 @@ public class CvsClientes  implements java.io.Serializable {
        this.cvsCep = cvsCep;
        this.cvsBairro = cvsBairro;
        this.cvsNacionalidade = cvsNacionalidade;
+       this.cvsVendases = cvsVendases;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="cvs_id_cliente", unique=true, nullable=false)
-    public int getCvsIdCliente() {
+    public Integer getCvsIdCliente() {
         return this.cvsIdCliente;
     }
     
-    public void setCvsIdCliente(int cvsIdCliente) {
+    public void setCvsIdCliente(Integer cvsIdCliente) {
         this.cvsIdCliente = cvsIdCliente;
     }
 
@@ -209,6 +215,19 @@ public class CvsClientes  implements java.io.Serializable {
     public void setCvsNacionalidade(String cvsNacionalidade) {
         this.cvsNacionalidade = cvsNacionalidade;
     }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="cvsClientes")
+    public Set getCvsVendases() {
+        return this.cvsVendases;
+    }
+    
+    public void setCvsVendases(Set cvsVendases) {
+        this.cvsVendases = cvsVendases;
+    }
+
+
+
+
 }
 
 

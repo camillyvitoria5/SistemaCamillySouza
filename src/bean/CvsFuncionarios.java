@@ -3,10 +3,13 @@ package bean;
 
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,6 +31,7 @@ public class CvsFuncionarios  implements java.io.Serializable {
      private String cvsEmail;
      private String cvsNome;
      private String cvsTelefone;
+     private Set cvsVendases = new HashSet(0);
 
     public CvsFuncionarios() {
     }
@@ -44,6 +48,7 @@ public class CvsFuncionarios  implements java.io.Serializable {
        this.cvsEmail = cvsEmail;
        this.cvsNome = cvsNome;
        this.cvsTelefone = cvsTelefone;
+       this.cvsVendases = cvsVendases;
     }
    
      @Id 
@@ -117,6 +122,19 @@ public class CvsFuncionarios  implements java.io.Serializable {
     public void setCvsTelefone(String cvsTelefone) {
         this.cvsTelefone = cvsTelefone;
     }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="cvsFuncionarios")
+    public Set getCvsVendases() {
+        return this.cvsVendases;
+    }
+    
+    public void setCvsVendases(Set cvsVendases) {
+        this.cvsVendases = cvsVendases;
+    }
+
+
+
+
 }
 
 
