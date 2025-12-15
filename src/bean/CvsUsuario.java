@@ -22,18 +22,18 @@ import javax.persistence.TemporalType;
 public class CvsUsuario  implements java.io.Serializable {
 
 
-     private Integer cvsIdUsuario;
+     private int cvsIdUsuario;
      private String cvsNome;
      private String cvsApelido;
      private String cvsSenha;
      private Date cvsDataNascimento;
-     private Integer cvsAtivo;
+     private int cvsAtivo;
      private String cvsCpf;
 
     public CvsUsuario() {
     }
 
-    public CvsUsuario(String cvsNome, String cvsApelido, String cvsSenha, Date cvsDataNascimento, Integer cvsAtivo, String cvsCpf) {
+    public CvsUsuario(String cvsNome, String cvsApelido, String cvsSenha, Date cvsDataNascimento, int cvsAtivo, String cvsCpf) {
        this.cvsNome = cvsNome;
        this.cvsApelido = cvsApelido;
        this.cvsSenha = cvsSenha;
@@ -46,11 +46,11 @@ public class CvsUsuario  implements java.io.Serializable {
 
     
     @Column(name="cvs_id_usuario", unique=true, nullable=false)
-    public Integer getCvsIdUsuario() {
+    public int getCvsIdUsuario() {
         return this.cvsIdUsuario;
     }
     
-    public void setCvsIdUsuario(Integer cvsIdUsuario) {
+    public void setCvsIdUsuario(int cvsIdUsuario) {
         this.cvsIdUsuario = cvsIdUsuario;
     }
 
@@ -96,11 +96,11 @@ public class CvsUsuario  implements java.io.Serializable {
 
     
     @Column(name="cvs_ativo")
-    public Integer getCvsAtivo() {
+    public int getCvsAtivo() {
         return this.cvsAtivo;
     }
     
-    public void setCvsAtivo(Integer cvsAtivo) {
+    public void setCvsAtivo(int cvsAtivo) {
         this.cvsAtivo = cvsAtivo;
     }
 

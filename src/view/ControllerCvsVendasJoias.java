@@ -6,7 +6,7 @@ package view;
  */
 
 
-import bean.CvsVendasJoias;
+import bean.CvsVendasjoias;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -37,18 +37,15 @@ public class ControllerCvsVendasJoias extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        CvsVendasJoias cvsVendasJoias = (CvsVendasJoias) lista.get(rowIndex);
-        if (columnIndex == 0){
-            return cvsVendasJoias.getCodigo();
-        }
+        CvsVendasjoias cvsVendasjoias = (CvsVendasjoias) lista.get(rowIndex);
         if (columnIndex == 1){
-            return cvsVendasJoias.getNome();
+            return cvsVendasjoias.getCvsJoias();
         }
         if (columnIndex == 2){
-            return cvsVendasJoias.getDescricao();
+            return cvsVendasjoias.getCvsQuant();
         }
         if (columnIndex == 3){
-            return cvsVendasJoias.getPreco();
+            return cvsVendasjoias.getCvsValorUnidade();
         }
         return "LP 4";
         
@@ -56,10 +53,9 @@ public class ControllerCvsVendasJoias extends AbstractTableModel{
         
     @Override
     public String getColumnName (int column) {
-        if (column == 0) return "Código";
-        if (column == 1) return "Nome";
-        if (column == 2) return "Descrição";
-        if (column == 3) return "Preço";
+        if (column == 0) return "JOIA";
+        if (column == 1) return "QUANT";
+        if (column == 2) return "PREÇO";
         return "";
     }
     

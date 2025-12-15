@@ -2,7 +2,6 @@ package bean;
 // Generated 09/12/2025 21:39:33 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,8 +23,8 @@ public class CvsVendasjoias  implements java.io.Serializable {
      private int cvsIdVendasJoias;
      private CvsJoias cvsJoias;
      private CvsVendas cvsVendas;
-     private BigDecimal cvsValorUnidade;
-     private Integer cvsQuant;
+     private Double cvsValorUnidade;
+     private int cvsQuant;
 
     public CvsVendasjoias() {
     }
@@ -34,7 +33,7 @@ public class CvsVendasjoias  implements java.io.Serializable {
     public CvsVendasjoias(int cvsIdVendasJoias) {
         this.cvsIdVendasJoias = cvsIdVendasJoias;
     }
-    public CvsVendasjoias(int cvsIdVendasJoias, CvsJoias cvsJoias, CvsVendas cvsVendas, BigDecimal cvsValorUnidade, Integer cvsQuant) {
+    public CvsVendasjoias(int cvsIdVendasJoias, CvsJoias cvsJoias, CvsVendas cvsVendas, Double cvsValorUnidade, int cvsQuant) {
        this.cvsIdVendasJoias = cvsIdVendasJoias;
        this.cvsJoias = cvsJoias;
        this.cvsVendas = cvsVendas;
@@ -76,21 +75,21 @@ public class CvsVendasjoias  implements java.io.Serializable {
 
     
     @Column(name="cvs_valorUnidade", precision=10)
-    public BigDecimal getCvsValorUnidade() {
+    public Double getCvsValorUnidade() {
         return this.cvsValorUnidade;
     }
     
-    public void setCvsValorUnidade(BigDecimal cvsValorUnidade) {
+    public void setCvsValorUnidade(Double cvsValorUnidade) {
         this.cvsValorUnidade = cvsValorUnidade;
     }
 
     
     @Column(name="cvs_quant")
-    public Integer getCvsQuant() {
+    public int getCvsQuant() {
         return this.cvsQuant;
     }
     
-    public void setCvsQuant(Integer cvsQuant) {
+    public void setCvsQuant(int cvsQuant) {
         this.cvsQuant = cvsQuant;
     }
 

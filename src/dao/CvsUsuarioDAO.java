@@ -49,21 +49,33 @@ public class CvsUsuarioDAO extends DAOAbstract {
     public Object list(int codigo) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CvsUsuario.class);
-        criteria.add(Restrictions.eq("cvs_id_usuario", codigo) );
+        criteria.add(Restrictions.eq("cvs_id_usuario", codigo));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
 
+    public boolean fazerLogin(String usuario, String senha) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CvsUsuario.class);
+        criteria.add(Restrictions.eq("cvs_nome", usuario));
+        criteria.add(Restrictions.eq("cvs_senha", senha));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        if (!lista.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
-        public ArrayList listAll() {
+    public ArrayList listAll() {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CvsUsuario.class);
         List lista = criteria.list();
         session.getTransaction().commit();
         return (ArrayList) lista;
-}
-
+    }
 
     public static void main(String[] args) {
         CvsUsuarioDAO usuariosDAO = new CvsUsuarioDAO();

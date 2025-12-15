@@ -2,7 +2,6 @@ package bean;
 // Generated 09/12/2025 21:39:33 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,8 +30,7 @@ public class CvsVendas  implements java.io.Serializable {
      private CvsClientes cvsClientes;
      private CvsFuncionarios cvsFuncionarios;
      private Date cvsDataVenda;
-     private BigDecimal cvsTotal;
-     private Set cvsVendasjoiases = new HashSet(0);
+     private Double cvsTotal;
 
     public CvsVendas() {
     }
@@ -41,13 +39,12 @@ public class CvsVendas  implements java.io.Serializable {
     public CvsVendas(int cvsIdVenda) {
         this.cvsIdVenda = cvsIdVenda;
     }
-    public CvsVendas(int cvsIdVenda, CvsClientes cvsClientes, CvsFuncionarios cvsFuncionarios, Date cvsDataVenda, BigDecimal cvsTotal, Set cvsVendasjoiases) {
+    public CvsVendas(int cvsIdVenda, CvsClientes cvsClientes, CvsFuncionarios cvsFuncionarios, Date cvsDataVenda, Double cvsTotal) {
        this.cvsIdVenda = cvsIdVenda;
        this.cvsClientes = cvsClientes;
        this.cvsFuncionarios = cvsFuncionarios;
        this.cvsDataVenda = cvsDataVenda;
        this.cvsTotal = cvsTotal;
-       this.cvsVendasjoiases = cvsVendasjoiases;
     }
    
      @Id 
@@ -94,26 +91,13 @@ public class CvsVendas  implements java.io.Serializable {
 
     
     @Column(name="cvs_total", precision=10)
-    public BigDecimal getCvsTotal() {
+    public Double getCvsTotal() {
         return this.cvsTotal;
     }
     
-    public void setCvsTotal(BigDecimal cvsTotal) {
+    public void setCvsTotal(Double cvsTotal) {
         this.cvsTotal = cvsTotal;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="cvsVendas")
-    public Set getCvsVendasjoiases() {
-        return this.cvsVendasjoiases;
-    }
-    
-    public void setCvsVendasjoiases(Set cvsVendasjoiases) {
-        this.cvsVendasjoiases = cvsVendasjoiases;
-    }
-
-
-
-
 }
 
 
