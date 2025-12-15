@@ -309,7 +309,7 @@ public class JDlgCvsJoias extends javax.swing.JDialog {
 
     private void jBtnCvsAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsAlterarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtCvsTipo, jFmtCvsMaterial, jBtnCvsConfirmar, jBtnCvsCancelar, jTxtCvsPeso, jTxtDescricao, jTxtPreco);
+        Util.habilitar(true, jTxtCvsNome, jTxtCvsTipo, jFmtCvsMaterial, jBtnCvsConfirmar, jBtnCvsCancelar, jTxtCvsPeso, jTxtDescricao, jTxtPreco);
         Util.habilitar(false, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
         incluir = false;
         jTxtCvsNome.grabFocus();
@@ -319,6 +319,7 @@ public class JDlgCvsJoias extends javax.swing.JDialog {
         // TODO add your handling code here:
         habilitar(true);
         limparCampos();
+        incluir = true;
     }//GEN-LAST:event_jBtnCvsIncluirActionPerformed
 
     private void jBtnCvsCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsCancelarActionPerformed

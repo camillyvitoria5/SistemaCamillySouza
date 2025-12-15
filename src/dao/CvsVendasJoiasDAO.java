@@ -49,21 +49,29 @@ public class CvsVendasJoiasDAO extends DAOAbstract {
     public Object list(int codigo) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CvsVendasjoias.class);
-        criteria.add(Restrictions.eq("iaaIdCvsVendasjoias", codigo) );
+        criteria.add(Restrictions.eq("cvs_idVendasJoias", codigo));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listJoias(Object venda) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CvsVendasjoias.class);
+        criteria.add(Restrictions.eq("cvsVendas", venda));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
 
     @Override
-        public ArrayList listAll() {
+    public ArrayList listAll() {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CvsVendasjoias.class);
         List lista = criteria.list();
         session.getTransaction().commit();
         return (ArrayList) lista;
-}
-
+    }
 
     public static void main(String[] args) {
         CvsVendasJoiasDAO cvsVendasjoiasDAO = new CvsVendasJoiasDAO();

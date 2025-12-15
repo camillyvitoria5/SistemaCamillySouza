@@ -18,6 +18,7 @@ public class ControllerCvsVendasJoias extends AbstractTableModel {
 
     public void setList(List lista) {
         this.lista = lista;
+        this.fireTableDataChanged();
     }
 
     public List getList() {
@@ -51,16 +52,16 @@ public class ControllerCvsVendasJoias extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         CvsVendasjoias cvsVendasjoias = (CvsVendasjoias) lista.get(rowIndex);
-        if (columnIndex == 1) {
+        if (columnIndex == 0) {
             return cvsVendasjoias.getCvsJoias();
         }
-        if (columnIndex == 2) {
+        if (columnIndex == 1) {
             return cvsVendasjoias.getCvsQuant();
         }
-        if (columnIndex == 3) {
+        if (columnIndex == 2) {
             return cvsVendasjoias.getCvsValorUnidade();
         }
-        if (columnIndex == 4) {
+        if (columnIndex == 3) {
             return cvsVendasjoias.getCvsValorUnidade()*cvsVendasjoias.getCvsQuant();
         }
         return "LP 4";
@@ -78,7 +79,7 @@ public class ControllerCvsVendasJoias extends AbstractTableModel {
         if (column == 2) {
             return "PREÇO";
         }
-        if (column == 4) {
+        if (column == 3) {
             return "TOTAL";
         }
         return "";

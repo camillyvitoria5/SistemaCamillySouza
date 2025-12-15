@@ -26,7 +26,9 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-
+        
+        Util.habilitar(false, jTxtValor, jTxtTotal);
+        
         CvsJoiasDAO cvsJoiasDAO = new CvsJoiasDAO();
         List listaJoias = (List) cvsJoiasDAO.listAll();
         for (int i = 0; i < listaJoias.size(); i++) {
@@ -82,13 +84,24 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
 
         jLabel1.setText("Produtos");
 
+        jCboJoias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCboJoiasActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Quantidade");
+
+        jTxtQuant.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtQuantKeyReleased(evt);
+            }
+        });
 
         jLabel3.setText("Valor Unitário");
 
         jLabel4.setText("Total");
 
-        jBtnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/confirmar.png"))); // NOI18N
         jBtnOk.setText("Ok");
         jBtnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +109,6 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
             }
         });
 
-        jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
         jBtnCancelar.setText("Cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +180,13 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
+        if (viewbean().getCvsQuant()== 0) {
+            Util.mensagem("Quantidade não pode ser 0");
+            jTxtQuant.grabFocus();
+        } else {
+            jDlgVendas.controllerCvsVendasJoias.addBean(viewbean());
+            this.dispose();
+        }
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
@@ -175,6 +194,26 @@ public class JDlgCvsVendasJoias extends javax.swing.JDialog {
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    private void jCboJoiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboJoiasActionPerformed
+        // TODO add your handling code here:
+        CvsJoias cvsJoias = (CvsJoias) jCboJoias.getSelectedItem();
+        jTxtValor.setText(Util.doubleToStr(cvsJoias.getCvsPreco()));
+        jTxtTotal.setText(Util.doubleToStr(cvsJoias.getCvsPreco()));
+        jTxtQuant.setText("1");
+    }//GEN-LAST:event_jCboJoiasActionPerformed
+
+    private void jTxtQuantKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtQuantKeyReleased
+        // TODO add your handling code here:
+        if (jTxtQuant.getText().equals("")) {
+            jTxtTotal.setText("0");
+        } else {
+            int qtd = Util.strToInt(jTxtQuant.getText());
+            double unitario = Util.strToDouble(jTxtValor.getText());
+            double total = qtd * unitario;
+            jTxtTotal.setText(Util.doubleToStr(total));
+        }
+    }//GEN-LAST:event_jTxtQuantKeyReleased
 
     /**
      * @param args the command line arguments

@@ -80,6 +80,10 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
         jCboCvsClientes.setSelectedItem(vendas.getCvsFuncionarios());
         jFmtCvsData.setText(Util.dateToStr(vendas.getCvsDataVenda()));
         jTxtCvsTotal.setText(Util.doubleToStr(vendas.getCvsTotal()));
+
+        CvsVendasJoiasDAO cvsVendasJoiasDAO = new CvsVendasJoiasDAO();
+        List listaVendaJoias = (List) cvsVendasJoiasDAO.listJoias(vendas);
+        controllerCvsVendasJoias.setList(listaVendaJoias);
     }
 
     public void habilitar(boolean status) {
@@ -353,7 +357,7 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
 
     private void jBtnCvsAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsAlterarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jFmtCvsData, jCboCvsClientes, jCboCvsVendedor, jTxtCvsTotal, jBtnCVsConfirmar, jBtnCvsCancelar);
+        Util.habilitar(true, jFmtCvsData, jCboCvsClientes, jCboCvsVendedor, jTxtCvsTotal, jTblVendaJoias, jBtnCvsIncluirProd, jBtnCvsAlterarProd, jBtnCvsExcluirProd, jBtnCVsConfirmar, jBtnCvsCancelar);
         Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
         jFmtCvsData.grabFocus();
         incluir = false;
@@ -384,12 +388,11 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
                 cvsVendasJoias.setCvsVendas(viewBean());
                 cvsVendasJoiasDAO.insert(cvsVendasJoias);
             }
-
-            habilitar(false);
-            limparCampos();
         } else {
             vendasDAO.update(viewBean());
         }
+        habilitar(false);
+        limparCampos();
     }//GEN-LAST:event_jBtnCVsConfirmarActionPerformed
 
     private void jBtnCvsCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsCancelarActionPerformed

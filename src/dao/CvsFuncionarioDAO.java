@@ -45,7 +45,7 @@ public class CvsFuncionarioDAO extends DAOAbstract {
     public Object list(int codigo) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CvsFuncionarios.class);
-        criteria.add(Restrictions.eq("iaaIdCvsFuncionarios", codigo) );
+        criteria.add(Restrictions.eq("cvs_id_funcionario", codigo) );
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
