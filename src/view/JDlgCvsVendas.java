@@ -80,8 +80,9 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
         jCboCvsClientes.setSelectedItem(vendas.getCvsFuncionarios());
         jFmtCvsData.setText(Util.dateToStr(vendas.getCvsDataVenda()));
         jTxtCvsTotal.setText(Util.doubleToStr(vendas.getCvsTotal()));
-
+        
         CvsVendasJoiasDAO cvsVendasJoiasDAO = new CvsVendasJoiasDAO();
+        
         List listaVendaJoias = (List) cvsVendasJoiasDAO.listJoias(vendas);
         controllerCvsVendasJoias.setList(listaVendaJoias);
     }
@@ -388,11 +389,12 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
                 cvsVendasJoias.setCvsVendas(viewBean());
                 cvsVendasJoiasDAO.insert(cvsVendasJoias);
             }
+
+            habilitar(false);
+            limparCampos();
         } else {
-            vendasDAO.update(viewBean());
+            
         }
-        habilitar(false);
-        limparCampos();
     }//GEN-LAST:event_jBtnCVsConfirmarActionPerformed
 
     private void jBtnCvsCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsCancelarActionPerformed
