@@ -49,20 +49,21 @@ public class CvsVendasDAO extends DAOAbstract {
     public Object list(int codigo) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CvsVendas.class);
-        criteria.add(Restrictions.eq("CvsVendas", codigo));
+        criteria.add(Restrictions.eq("CvsVendas", codigo) );
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
     }
 
     @Override
-    public ArrayList listAll() {
+        public ArrayList listAll() {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CvsVendas.class);
         List lista = criteria.list();
         session.getTransaction().commit();
         return (ArrayList) lista;
-    }
+}
+
 
     public static void main(String[] args) {
         CvsVendasDAO usuariosDAO = new CvsVendasDAO();

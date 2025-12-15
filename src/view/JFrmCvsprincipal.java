@@ -33,13 +33,13 @@ public class JFrmCvsprincipal extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItemUsuario = new javax.swing.JMenuItem();
-        jMenuItemCliente = new javax.swing.JMenuItem();
-        jMenuItemFuncionario = new javax.swing.JMenuItem();
-        jMenuItemProduto = new javax.swing.JMenuItem();
+        jDlgUsuario = new javax.swing.JMenuItem();
+        jDlgClientes = new javax.swing.JMenuItem();
+        jDlgProdutos = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jDlgSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItemVendas = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jTextField1.setText("jTextField1");
 
@@ -47,41 +47,41 @@ public class JFrmCvsprincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Cadastros");
 
-        jMenuItemUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/usuario.png"))); // NOI18N
-        jMenuItemUsuario.setText("Usuario");
-        jMenuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
+        jDlgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/usuario.png"))); // NOI18N
+        jDlgUsuario.setText("Usuario");
+        jDlgUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUsuarioActionPerformed(evt);
+                jDlgUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemUsuario);
+        jMenu1.add(jDlgUsuario);
 
-        jMenuItemCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/cliente.png"))); // NOI18N
-        jMenuItemCliente.setText("clientes");
-        jMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
+        jDlgClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/cliente.png"))); // NOI18N
+        jDlgClientes.setText("clientes");
+        jDlgClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemClienteActionPerformed(evt);
+                jDlgClientesActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemCliente);
+        jMenu1.add(jDlgClientes);
 
-        jMenuItemFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/16103265.png"))); // NOI18N
-        jMenuItemFuncionario.setText("funcionarios");
-        jMenuItemFuncionario.addActionListener(new java.awt.event.ActionListener() {
+        jDlgProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/16103265.png"))); // NOI18N
+        jDlgProdutos.setText("funcionarios");
+        jDlgProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemFuncionarioActionPerformed(evt);
+                jDlgProdutosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemFuncionario);
+        jMenu1.add(jDlgProdutos);
 
-        jMenuItemProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/produto.png"))); // NOI18N
-        jMenuItemProduto.setText("Produtos");
-        jMenuItemProduto.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/produto.png"))); // NOI18N
+        jMenuItem1.setText("Produtos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemProdutoActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemProduto);
+        jMenu1.add(jMenuItem1);
 
         jDlgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/sair.png"))); // NOI18N
         jDlgSair.setText("sair");
@@ -96,14 +96,14 @@ public class JFrmCvsprincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Movimento");
 
-        jMenuItemVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/16103265.png"))); // NOI18N
-        jMenuItemVendas.setText("vendas");
-        jMenuItemVendas.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgJfrm/16103265.png"))); // NOI18N
+        jMenuItem5.setText("vendas");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemVendasActionPerformed(evt);
+                jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemVendas);
+        jMenu2.add(jMenuItem5);
 
         jMenuBar1.add(jMenu2);
 
@@ -123,45 +123,45 @@ public class JFrmCvsprincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
+    private void jDlgClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDlgClientesActionPerformed
         // TODO add your handling code here:
         JDlgCvsClientes dlg = new JDlgCvsClientes(this, true);
         dlg.setLocationRelativeTo(this);
         dlg.setVisible(true);
-    }//GEN-LAST:event_jMenuItemClienteActionPerformed
+    }//GEN-LAST:event_jDlgClientesActionPerformed
 
-    private void jMenuItemFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionarioActionPerformed
+    private void jDlgProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDlgProdutosActionPerformed
         // TODO add your handling code here:
         JDlgCvsFuncionario dlg = new JDlgCvsFuncionario(this, true);
         dlg.setLocationRelativeTo(this);
         dlg.setVisible(true);
-    }//GEN-LAST:event_jMenuItemFuncionarioActionPerformed
+    }//GEN-LAST:event_jDlgProdutosActionPerformed
 
     private void jDlgSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDlgSairActionPerformed
         // TODO add your handling code here:
          dispose();
     }//GEN-LAST:event_jDlgSairActionPerformed
 
-    private void jMenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioActionPerformed
+    private void jDlgUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDlgUsuarioActionPerformed
         // TODO add your handling code here: jDlgUsuarios dlg = new jDlgUsuarios(this, true);
         JDlgCvsUsuario dlg = new JDlgCvsUsuario(this, true);
         dlg.setLocationRelativeTo(this);
         dlg.setVisible(true);
-    }//GEN-LAST:event_jMenuItemUsuarioActionPerformed
+    }//GEN-LAST:event_jDlgUsuarioActionPerformed
 
-    private void jMenuItemVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVendasActionPerformed
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        JDlgCvsVendas jDlgVendas = new JDlgCvsVendas(this, true);
-        jDlgVendas.setLocationRelativeTo(this);
-        jDlgVendas.setVisible(true);
-    }//GEN-LAST:event_jMenuItemVendasActionPerformed
+        JDlgCvsVendasJoias jDlgVendasJoias = new JDlgCvsVendasJoias(this, true);
+        jDlgVendasJoias.setLocationRelativeTo(this);
+        jDlgVendasJoias.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         JDlgCvsJoias jDlgCvsJoias = new JDlgCvsJoias(this, true);
         jDlgCvsJoias.setLocationRelativeTo(this);
         jDlgCvsJoias.setVisible(true);
-    }//GEN-LAST:event_jMenuItemProdutoActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,15 +214,15 @@ public class JFrmCvsprincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jDlgClientes;
+    private javax.swing.JMenuItem jDlgProdutos;
     private javax.swing.JMenuItem jDlgSair;
+    private javax.swing.JMenuItem jDlgUsuario;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItemCliente;
-    private javax.swing.JMenuItem jMenuItemFuncionario;
-    private javax.swing.JMenuItem jMenuItemProduto;
-    private javax.swing.JMenuItem jMenuItemUsuario;
-    private javax.swing.JMenuItem jMenuItemVendas;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

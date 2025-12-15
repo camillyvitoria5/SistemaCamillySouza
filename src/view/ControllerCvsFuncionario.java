@@ -6,7 +6,7 @@ package view;
  */
 
 
-import bean.CvsFuncionarios;
+import bean.CvsFuncionario;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -37,18 +37,18 @@ public class ControllerCvsFuncionario extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        CvsFuncionarios cvsFuncionario = (CvsFuncionarios) lista.get(rowIndex);
+        CvsFuncionario cvsFuncionario = (CvsFuncionario) lista.get(rowIndex);
         if (columnIndex == 0){
-            return cvsFuncionario.getCvsIdFuncionario();
+            return cvsFuncionario.getIdFuncionario();
         }
         if (columnIndex == 1){
-            return cvsFuncionario.getCvsNome();
+            return cvsFuncionario.getNome();
         }
         if (columnIndex == 2){
-            return cvsFuncionario.getCvsCpf();
+            return cvsFuncionario.getEmail();
         }
         if (columnIndex == 3){
-            return cvsFuncionario.getCvsDataNascimento();
+            return cvsFuncionario.getTelefone();
         }
         return "LP 4";
         
@@ -56,10 +56,10 @@ public class ControllerCvsFuncionario extends AbstractTableModel{
         
     @Override
     public String getColumnName (int column) {
-        if (column == 0) return "ID";
-        if (column == 1) return "NOME";
-        if (column == 2) return "CPF";
-        if (column == 3) return "DATA DE NASCIMENTO";
+        if (column == 0) return "Código";
+        if (column == 1) return "Nome";
+        if (column == 2) return "Email";
+        if (column == 3) return "Telefone";
         return "";
     }
     

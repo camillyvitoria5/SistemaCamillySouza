@@ -86,20 +86,6 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
         }
     }
 
-    public void habilitar(boolean status) {
-        if (status) {
-            Util.habilitar(true, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-            Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
-        } else {
-            Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-            Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
-        }
-    }
-
-    public void limparCampos() {
-        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -312,8 +298,9 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
 
     private void jBtnCvsIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsIncluirActionPerformed
         // TODO add your handling code here:
-        habilitar(true);
-        limparCampos();
+        Util.habilitar(true, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+        Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
         jTxtCvsCodigo.grabFocus();
         incluir = true;
     }//GEN-LAST:event_jBtnCvsIncluirActionPerformed
@@ -324,21 +311,22 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
 
     private void jBtnCvsConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsConfirmarActionPerformed
         // TODO add your  handling code here:
-
+        Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+        Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
         CvsUsuarioDAO cvsUsuariosDAO = new CvsUsuarioDAO();
         if (incluir == true) {
             cvsUsuariosDAO.insert(viewBean());
         } else {
             cvsUsuariosDAO.update(viewBean());
         }
-        limparCampos();
-        habilitar(false);
+        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
     }//GEN-LAST:event_jBtnCvsConfirmarActionPerformed
 
     private void jBtnCvsCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsCancelarActionPerformed
         // TODO add your handling code here:
-        habilitar(false);
-        limparCampos();
+        Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+        Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
     }//GEN-LAST:event_jBtnCvsCancelarActionPerformed
 
     private void jBtnCvsExcluirActionPerformed(java.awt.event.ActionEvent evt) {
@@ -350,7 +338,7 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
                 CvsUsuarioDAO cvsUsuariosDAO = new CvsUsuarioDAO();
                 cvsUsuariosDAO.delete(viewBean());
             }
-            limparCampos();
+            Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
         }
     }
 

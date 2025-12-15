@@ -1,10 +1,6 @@
 package tools;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -23,7 +19,7 @@ public class Util {
     public static void habilitar(boolean valor, JComponent... componentes) {
         for (int i = 0; i < componentes.length; i++) {
             componentes[i].setEnabled(valor);
-
+            
         }
     }
 
@@ -35,9 +31,9 @@ public class Util {
             if (componentes[i] instanceof JComboBox) {
                 ((JComboBox) componentes[i]).setSelectedIndex(-1);
             }
-
+            
         }
-
+        
     }
 
     public static void mensagem(String cad) {
@@ -50,7 +46,7 @@ public class Util {
     }
 
     public static int strToInt(String cad) {
-        return Integer.parseInt(cad);
+        return Integer.valueOf(cad);
     }
 
     public static String intToStr(int num) {
@@ -66,20 +62,10 @@ public class Util {
     }
 
     public static Date strToDate(String cad) {
-        try {
-            SimpleDateFormat dataNascFormat = new SimpleDateFormat("dd/MM/yyyy");
-            return dataNascFormat.parse(cad);
-        } catch (ParseException ex) {
-            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return null;
     }
 
-    public static String dateToStr(Date dataNasc) {
-        if (dataNasc == null) {
-            return "";
-        }
-        SimpleDateFormat dataNascFormat = new SimpleDateFormat("dd/MM/yyyy");
-        return dataNascFormat.format(dataNasc);
+    public static String dateToStr(Date data) {
+        return "";
     }
 }

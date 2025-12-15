@@ -23,7 +23,7 @@ public class CvsClientes  implements java.io.Serializable {
 
 
      private int cvsIdCliente;
-     private String cvsNome;
+     private String cvsIdNome;
      private String cvsEmail;
      private String cvsCidade;
      private String cvsRg;
@@ -41,8 +41,8 @@ public class CvsClientes  implements java.io.Serializable {
     public CvsClientes() {
     }
 
-    public CvsClientes(String cvsNome, String cvsEmail, String cvsCidade, String cvsRg, Date cvsDataNascimento, String cvsTelefone, String cvsEndereco, String cvsSexo, Date cvsDataCadastro, String cvsCpf, String cvsEstado, String cvsCep, String cvsBairro, String cvsNacionalidade) {
-       this.cvsNome = cvsNome;
+    public CvsClientes(String cvsIdNome, String cvsEmail, String cvsCidade, String cvsRg, Date cvsDataNascimento, String cvsTelefone, String cvsEndereco, String cvsSexo, Date cvsDataCadastro, String cvsCpf, String cvsEstado, String cvsCep, String cvsBairro, String cvsNacionalidade) {
+       this.cvsIdNome = cvsIdNome;
        this.cvsEmail = cvsEmail;
        this.cvsCidade = cvsCidade;
        this.cvsRg = cvsRg;
@@ -71,13 +71,13 @@ public class CvsClientes  implements java.io.Serializable {
     }
 
     
-    @Column(name="cvs_nome", length=150)
-    public String getCvsNome() {
-        return this.cvsNome;
+    @Column(name="cvs_id_nome", length=150)
+    public String getCvsIdNome() {
+        return this.cvsIdNome;
     }
     
-    public void setCvsNome(String cvsNome) {
-        this.cvsNome = cvsNome;
+    public void setCvsIdNome(String cvsIdNome) {
+        this.cvsIdNome = cvsIdNome;
     }
 
     
