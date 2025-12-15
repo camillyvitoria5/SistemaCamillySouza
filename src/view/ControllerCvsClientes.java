@@ -39,16 +39,16 @@ public class ControllerCvsClientes extends AbstractTableModel{
     public Object getValueAt(int rowIndex, int columnIndex) {
         CvsClientes cvsClientes = (CvsClientes) lista.get(rowIndex);
         if (columnIndex == 0){
-            return cvsClientes.getCliente();
+            return cvsClientes.getCvsIdCliente();
         }
         if (columnIndex == 1){
-            return cvsClientes.getNome();
+            return cvsClientes.getCvsNome();
         }
         if (columnIndex == 2){
-            return cvsClientes.getCpf();
+            return cvsClientes.getCvsCpf();
         }
         if (columnIndex == 3){
-            return cvsClientes.getDataNascimento();
+            return cvsClientes.getCvsDataNascimento();
         }
         return "LP 4";
         
@@ -56,10 +56,10 @@ public class ControllerCvsClientes extends AbstractTableModel{
         
     @Override
     public String getColumnName (int column) {
-        if (column == 0) return "Código";
-        if (column == 1) return "Nome";
-        if (column == 2) return "Cpf";
-        if (column == 3) return "Data Nascimento";
+        if (column == 0) return "ID";
+        if (column == 1) return "NOME";
+        if (column == 2) return "CPF";
+        if (column == 3) return "DATA DE NASCIMENTO";
         return "";
     }
     

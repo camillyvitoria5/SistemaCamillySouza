@@ -1,4 +1,9 @@
 package view;
+
+import bean.CvsClientes;
+import dao.CvsClientesDAO;
+import java.util.List;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
@@ -10,6 +15,7 @@ package view;
  */
 public class JDlgCvsClientesPesquisar extends javax.swing.JDialog {
     JDlgCvsClientes jDlgClientes;
+    ControllerCvsClientes controllerCvsClientes;
   
 
     /**
@@ -21,11 +27,12 @@ public class JDlgCvsClientesPesquisar extends javax.swing.JDialog {
     super(parent, modal);
     initComponents();
     setLocationRelativeTo(null);
-    //cvs_clientesDAO clientesDAO = new cvs_clientesDAO();
-    //List lista = (List) clientesDAO.listAll();
-    //controllerClientes = new Cvs_ControllerClientes();
-    //controllerClientes.setList(lista);
-    //jTable1.setModel(controllerClientes);
+    
+    CvsClientesDAO cvsClientesDAO = new CvsClientesDAO();
+    List lista = (List) cvsClientesDAO.listAll();
+    controllerCvsClientes = new ControllerCvsClientes();
+    controllerCvsClientes.setList(lista);
+    jTable1.setModel(controllerCvsClientes);
 }
 
 public void setTelaPai(JDlgCvsClientes jDlgClientes){
@@ -38,7 +45,8 @@ public void setTelaPai(JDlgCvsClientes jDlgClientes){
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jBtnCvsOkClie = new javax.swing.JButton();
+        jBtnCvsOkUsua = new javax.swing.JButton();
+        jBtnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,10 +63,17 @@ public void setTelaPai(JDlgCvsClientes jDlgClientes){
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBtnCvsOkClie.setText("OK");
-        jBtnCvsOkClie.addActionListener(new java.awt.event.ActionListener() {
+        jBtnCvsOkUsua.setText("OK");
+        jBtnCvsOkUsua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnCvsOkClieActionPerformed(evt);
+                jBtnCvsOkUsuaActionPerformed(evt);
+            }
+        });
+
+        jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
             }
         });
 
@@ -68,28 +83,42 @@ public void setTelaPai(JDlgCvsClientes jDlgClientes){
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBtnCvsOkClie)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBtnCvsOkUsua, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jBtnCvsOkClie)
-                .addGap(20, 20, 20))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnCvsOkUsua)
+                    .addComponent(jBtnCancelar))
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnCvsOkClieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsOkClieActionPerformed
+    private void jBtnCvsOkUsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsOkUsuaActionPerformed
+        // TODO add your handling code here:
+        int linSel = jTable1.getSelectedRow();
+        CvsClientes cvsClientes = (CvsClientes) controllerCvsClientes.getBean(linSel);
+        jDlgClientes.beanView(cvsClientes);
+        setVisible(false);
+    }//GEN-LAST:event_jBtnCvsOkUsuaActionPerformed
+
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-    }//GEN-LAST:event_jBtnCvsOkClieActionPerformed
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,7 +152,8 @@ public void setTelaPai(JDlgCvsClientes jDlgClientes){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnCvsOkClie;
+    private javax.swing.JButton jBtnCancelar;
+    private javax.swing.JButton jBtnCvsOkUsua;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

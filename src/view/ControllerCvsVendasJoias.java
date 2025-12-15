@@ -4,9 +4,7 @@ package view;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
-
-import bean.CvsVendasJoias;
+import bean.CvsVendasjoias;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -14,17 +12,32 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author u47443281803
  */
-public class ControllerCvsVendasJoias extends AbstractTableModel{
+public class ControllerCvsVendasJoias extends AbstractTableModel {
 
     List lista;
-    
-    public void setList(List lista){
-     this. lista = lista;   
+
+    public void setList(List lista) {
+        this.lista = lista;
     }
-    
-    public Object getBean(int rowIndex){
-        return lista.get(rowIndex);
+
+    public List getList() {
+        return this.lista;
     }
+
+    public void addBean(CvsVendasjoias cvsVendasjoias) {
+        this.lista.add(cvsVendasjoias);
+        this.fireTableDataChanged();
+    }
+
+    public void removeBean(CvsVendasjoias cvsVendasjoias) {
+        this.lista.remove(cvsVendasjoias);
+        this.fireTableDataChanged();
+    }
+
+    public CvsVendasjoias getBean(int rowIndex) {
+        return (CvsVendasjoias) lista.get(rowIndex);
+    }
+
     @Override
     public int getRowCount() {
         return lista.size();
@@ -37,30 +50,38 @@ public class ControllerCvsVendasJoias extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        CvsVendasJoias cvsVendasJoias = (CvsVendasJoias) lista.get(rowIndex);
-        if (columnIndex == 0){
-            return cvsVendasJoias.getCodigo();
+        CvsVendasjoias cvsVendasjoias = (CvsVendasjoias) lista.get(rowIndex);
+        if (columnIndex == 1) {
+            return cvsVendasjoias.getCvsJoias();
         }
-        if (columnIndex == 1){
-            return cvsVendasJoias.getNome();
+        if (columnIndex == 2) {
+            return cvsVendasjoias.getCvsQuant();
         }
-        if (columnIndex == 2){
-            return cvsVendasJoias.getDescricao();
+        if (columnIndex == 3) {
+            return cvsVendasjoias.getCvsValorUnidade();
         }
-        if (columnIndex == 3){
-            return cvsVendasJoias.getPreco();
+        if (columnIndex == 4) {
+            return cvsVendasjoias.getCvsValorUnidade()*cvsVendasjoias.getCvsQuant();
         }
         return "LP 4";
-        
+
     }
-        
+
     @Override
-    public String getColumnName (int column) {
-        if (column == 0) return "Código";
-        if (column == 1) return "Nome";
-        if (column == 2) return "Descrição";
-        if (column == 3) return "Preço";
+    public String getColumnName(int column) {
+        if (column == 0) {
+            return "JOIA";
+        }
+        if (column == 1) {
+            return "QUANT";
+        }
+        if (column == 2) {
+            return "PREÇO";
+        }
+        if (column == 4) {
+            return "TOTAL";
+        }
         return "";
     }
-    
+
 }

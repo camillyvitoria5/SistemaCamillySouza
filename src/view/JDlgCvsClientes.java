@@ -57,10 +57,15 @@ public class JDlgCvsClientes extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
-// Data Nascimento / Cadastro
+        // Data Nascimento / Cadastro
         try {
             MaskFormatter mascara = new MaskFormatter("##/##/####");
             jFmtCvsDataNascimento.setFormatterFactory(new DefaultFormatterFactory(mascara));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            MaskFormatter mascara = new MaskFormatter("##/##/####");
             jFmtCvsDataCadastro.setFormatterFactory(new DefaultFormatterFactory(mascara));
         } catch (ParseException ex) {
             ex.printStackTrace();
@@ -88,7 +93,7 @@ public class JDlgCvsClientes extends javax.swing.JDialog {
         CvsClientes cliente = new CvsClientes();
 
         cliente.setCvsIdCliente(Util.strToInt(jTxtCvsCodigo.getText()));
-        cliente.setCvsIdNome(jTxtCvsNome.getText());
+        cliente.setCvsNome(jTxtCvsNome.getText());
         cliente.setCvsEmail(jTxtCvsEmail.getText());
         cliente.setCvsCidade(jTxtCvsCidade.getText());
         cliente.setCvsRg(jFmtCvsRg.getText());
@@ -108,7 +113,7 @@ public class JDlgCvsClientes extends javax.swing.JDialog {
 
     public void beanView(CvsClientes cliente) {
         jTxtCvsCodigo.setText(Util.intToStr(cliente.getCvsIdCliente()));
-        jTxtCvsNome.setText(cliente.getCvsIdNome());
+        jTxtCvsNome.setText(cliente.getCvsNome());
         jTxtCvsEmail.setText(cliente.getCvsEmail());
         jTxtCvsCidade.setText(cliente.getCvsCidade());
         jFmtCvsRg.setText(cliente.getCvsRg());
@@ -122,6 +127,20 @@ public class JDlgCvsClientes extends javax.swing.JDialog {
         jFmtCvsCep.setText(cliente.getCvsCep());
         jTxtCvsBairro.setText(cliente.getCvsBairro());
         jTxtCvsNacionalidade.setText(cliente.getCvsNacionalidade());
+    }
+
+    public void habilitar(boolean status) {
+        if (status) {
+            Util.habilitar(true, jTxtCvsNome, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jTxtCvsCodigo, jBtnCvsConfirmar, jBtnCvsCancelar);
+            Util.habilitar(false, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
+        } else {
+            Util.habilitar(false, jTxtCvsNome, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jTxtCvsCodigo, jBtnCvsConfirmar, jBtnCvsCancelar);
+            Util.habilitar(true, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
+        }
+    }
+
+    public void limparCampos() {
+        Util.limpar(jTxtCvsNome, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jTxtCvsCodigo);
     }
 
     @SuppressWarnings("unchecked")
@@ -496,9 +515,8 @@ public class JDlgCvsClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtCvsEstadoActionPerformed
 
     private void jBtnCvsIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsIncluirActionPerformed
-        Util.habilitar(true, jTxtCvsNome, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jTxtCvsCodigo, jBtnCvsConfirmar, jBtnCvsCancelar);
-        Util.habilitar(false, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
-        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsEmail);
+        habilitar(true);
+        limparCampos();
         jTxtCvsCodigo.grabFocus();
         incluir = true;
     }//GEN-LAST:event_jBtnCvsIncluirActionPerformed
@@ -509,22 +527,20 @@ public class JDlgCvsClientes extends javax.swing.JDialog {
 
     private void jBtnCvsCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsCancelarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jTxtCvsNome, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jTxtCvsCodigo, jBtnCvsConfirmar, jBtnCvsCancelar);
-        Util.habilitar(true, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
-        Util.limpar(jTxtCvsNome, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jTxtCvsCodigo);
+        habilitar(false);
+        limparCampos();
     }//GEN-LAST:event_jBtnCvsCancelarActionPerformed
 
     private void jBtnCvsConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsConfirmarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jTxtCvsNome, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jTxtCvsCodigo, jBtnCvsConfirmar, jBtnCvsCancelar);
-        Util.habilitar(true, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
+        habilitar(false);
         CvsClientesDAO cvsClientesDAO = new CvsClientesDAO();
         if (incluir == true) {
             cvsClientesDAO.insert(viewBean());
         } else {
             cvsClientesDAO.update(viewBean());
         }
-        Util.limpar(jTxtCvsNome, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jTxtCvsCodigo);
+        limparCampos();
     }//GEN-LAST:event_jBtnCvsConfirmarActionPerformed
 
     private void jTxtCvsNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCvsNomeActionPerformed
@@ -533,7 +549,7 @@ public class JDlgCvsClientes extends javax.swing.JDialog {
 
     private void jBtnCvsAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsAlterarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jTxtCvsCodigo, jBtnCvsConfirmar, jBtnCvsCancelar);
+        Util.habilitar(true, jTxtCvsNome, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jBtnCvsConfirmar, jBtnCvsCancelar);
         Util.habilitar(false, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar, jBtnCvsIncluir);
         incluir = false;
         jTxtCvsNome.grabFocus();
@@ -548,7 +564,7 @@ public class JDlgCvsClientes extends javax.swing.JDialog {
                 CvsClientesDAO cvsClientesDAO = new CvsClientesDAO();
                 cvsClientesDAO.delete(viewBean());
             }
-            Util.limpar(jTxtCvsNome, jTxtCvsEmail, jFmtCvsCpf, jFmtCvsRg, jFmtCvsCep, jTxtCvsEstado, jTxtCvsEndereco, jTxtCidade, jTxtCvsBairro, jFmtCvsTelefone, jTxtCvsNacionalidade, jTxtCvsSexo, jFmtCvsDataCadastro, jFmtCvsDataNascimento, jTxtCvsCodigo);
+            limparCampos();
         }
     }//GEN-LAST:event_jBtnCvsExcluirActionPerformed
 

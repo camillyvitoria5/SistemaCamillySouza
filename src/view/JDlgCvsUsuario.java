@@ -68,7 +68,7 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
         } else {
             cvsUsuario.setCvsAtivo(0);
         }
-        System.out.println(cvsUsuario);
+        cvsUsuario.setCvsCpf(jFmtCvsCpf.getText());
         return cvsUsuario;
     }
 
@@ -84,6 +84,20 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
         } else {
             jChbCvsAtivo.setSelected(false);
         }
+    }
+
+    public void habilitar(boolean status) {
+        if (status) {
+            Util.habilitar(true, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+            Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+        } else {
+            Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
+            Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+        }
+    }
+
+    public void limparCampos() {
+        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
     }
 
     /**
@@ -298,9 +312,8 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
 
     private void jBtnCvsIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsIncluirActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-        Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
-        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
+        habilitar(true);
+        limparCampos();
         jTxtCvsCodigo.grabFocus();
         incluir = true;
     }//GEN-LAST:event_jBtnCvsIncluirActionPerformed
@@ -311,22 +324,21 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
 
     private void jBtnCvsConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsConfirmarActionPerformed
         // TODO add your  handling code here:
-        Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-        Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
+
         CvsUsuarioDAO cvsUsuariosDAO = new CvsUsuarioDAO();
         if (incluir == true) {
             cvsUsuariosDAO.insert(viewBean());
         } else {
             cvsUsuariosDAO.update(viewBean());
         }
-        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
+        limparCampos();
+        habilitar(false);
     }//GEN-LAST:event_jBtnCvsConfirmarActionPerformed
 
     private void jBtnCvsCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsCancelarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo, jBtnCvsConfirmar, jBtnCvsCancelar);
-        Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir, jBtnCvsPesquisar);
-        Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
+        habilitar(false);
+        limparCampos();
     }//GEN-LAST:event_jBtnCvsCancelarActionPerformed
 
     private void jBtnCvsExcluirActionPerformed(java.awt.event.ActionEvent evt) {
@@ -338,7 +350,7 @@ public class JDlgCvsUsuario extends javax.swing.JDialog {
                 CvsUsuarioDAO cvsUsuariosDAO = new CvsUsuarioDAO();
                 cvsUsuariosDAO.delete(viewBean());
             }
-            Util.limpar(jTxtCvsCodigo, jTxtCvsNome, jTxtCvsApelido, jFmtCvsCpf, jFmtCvsDataNasc, jPwdCvsSenha, jChbCvsAtivo);
+            limparCampos();
         }
     }
 

@@ -13,8 +13,12 @@ import bean.CvsVendasjoias;
 import tools.Util;
 import java.util.List;
 import dao.CvsClientesDAO;
+import dao.CvsFuncionarioDAO;
 import dao.CvsVendasJoiasDAO;
+import java.text.ParseException;
 import java.util.ArrayList;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -34,11 +38,26 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         habilitar(false);
-        CvsClientesDAO clientesDAO = new CvsClientesDAO();
-        List lista = (List) clientesDAO.listAll();
-        for (int i = 0; i < lista.size(); i++) {
-            jCboCvsClientes.addItem((CvsClientes) lista.get(i));
+
+        try {
+            MaskFormatter mascara = new MaskFormatter("##/##/####");
+            jFmtCvsData.setFormatterFactory(new DefaultFormatterFactory(mascara));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
         }
+
+        CvsClientesDAO clientesDAO = new CvsClientesDAO();
+        List listaClientes = (List) clientesDAO.listAll();
+        for (int i = 0; i < listaClientes.size(); i++) {
+            jCboCvsClientes.addItem((CvsClientes) listaClientes.get(i));
+        }
+
+        CvsFuncionarioDAO cvsFuncionarioDAO = new CvsFuncionarioDAO();
+        List listaFuncionarios = (List) cvsFuncionarioDAO.listAll();
+        for (int i = 0; i < listaFuncionarios.size(); i++) {
+            jCboCvsVendedor.addItem((CvsFuncionarios) listaFuncionarios.get(i));
+        }
+
         controllerCvsVendasJoias = new ControllerCvsVendasJoias();
         controllerCvsVendasJoias.setList(new ArrayList());
         jTblVendaJoias.setModel(controllerCvsVendasJoias);
@@ -66,12 +85,14 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
     public void habilitar(boolean status) {
         if (status) {
             Util.habilitar(true, jTxtCvsCodigo, jFmtCvsData, jCboCvsClientes,
-                    jCboCvsVendedor, jTxtCvsTotal, jBtnCVsConfirmar, jBtnCvsCancelar);
+                    jCboCvsVendedor, jTxtCvsTotal, jBtnCVsConfirmar, jBtnCvsCancelar,
+                    jTblVendaJoias, jBtnCvsIncluirProd, jBtnCvsAlterarProd, jBtnCvsExcluirProd);
             Util.habilitar(false, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir,
                     jBtnCvsPesquisar);
         } else {
             Util.habilitar(false, jTxtCvsCodigo, jFmtCvsData, jCboCvsClientes,
-                    jCboCvsVendedor, jTxtCvsTotal, jBtnCVsConfirmar, jBtnCvsCancelar);
+                    jCboCvsVendedor, jTxtCvsTotal, jBtnCVsConfirmar, jBtnCvsCancelar,
+                    jTblVendaJoias, jBtnCvsIncluirProd, jBtnCvsAlterarProd, jBtnCvsExcluirProd);
             Util.habilitar(true, jBtnCvsIncluir, jBtnCvsAlterar, jBtnCvsExcluir,
                     jBtnCvsPesquisar);
         }
@@ -269,7 +290,7 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
                         .addComponent(jBtnCvsCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnCvsPesquisar)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBtnCvsAlterarProd)
                     .addComponent(jBtnCvsIncluirProd)
@@ -316,7 +337,7 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
                     .addComponent(jBtnCvsCancelar)
                     .addComponent(jBtnCvsPesquisar)
                     .addComponent(jBtnCVsConfirmar))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -366,6 +387,8 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
 
             habilitar(false);
             limparCampos();
+        } else {
+            vendasDAO.update(viewBean());
         }
     }//GEN-LAST:event_jBtnCVsConfirmarActionPerformed
 
@@ -384,27 +407,26 @@ public class JDlgCvsVendas extends javax.swing.JDialog {
 
     private void jBtnCvsExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsExcluirProdActionPerformed
         // TODO add your handling code here:
-       /*if (Util.perguntar("Deseja Excluir?") == true) {
-         int rowIndex = jTable2.getSelectedRow();
-         controllerCvsVendasJoias.removeBean(rowIndex);
-         }*/
+        if (Util.perguntar("Deseja Excluir?") == true) {
+            int rowIndex = jTblVendaJoias.getSelectedRow();
+            controllerCvsVendasJoias.removeBean(controllerCvsVendasJoias.getBean(rowIndex));
+        }
 
     }//GEN-LAST:event_jBtnCvsExcluirProdActionPerformed
 
     private void jBtnCvsAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsAlterarProdActionPerformed
         // TODO add your handling code here:
-    /*    JDlgCvsVendasJoias jDlgCvsVendasProdutos = new JDlgCvsVendasJoias(null, true);
-         jDlgCvsVendasProdutos.setVisible(true);*/
+        JDlgCvsVendasJoias jDlgCvsVendasJoias = new JDlgCvsVendasJoias(null, true);
+        jDlgCvsVendasJoias.setTelaPai(this);
+        jDlgCvsVendasJoias.setVisible(true);
     }//GEN-LAST:event_jBtnCvsAlterarProdActionPerformed
 
     private void jBtnCvsIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsIncluirProdActionPerformed
         // TODO add your handling code here:
-        // TODO add your handling code here:
-  /*     JDlgCvsVendasJoias jDlgCvsVendasJoias = new JDlgCvsVendasJoias(null, true);
-         jDlgCvsVendasJoias.setTelaAnterior(this);
+        JDlgCvsVendasJoias jDlgCvsVendasJoias = new JDlgCvsVendasJoias(null, true);
+        jDlgCvsVendasJoias.setTelaPai(this);
+        jDlgCvsVendasJoias.setVisible(true);
 
-         jDlgCvsVendasJoias.setVisible(true);
-         */
     }//GEN-LAST:event_jBtnCvsIncluirProdActionPerformed
 
     private void jCboCvsClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboCvsClientesActionPerformed

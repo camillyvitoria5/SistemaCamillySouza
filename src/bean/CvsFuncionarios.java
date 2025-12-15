@@ -117,6 +117,22 @@ public class CvsFuncionarios  implements java.io.Serializable {
     public void setCvsTelefone(String cvsTelefone) {
         this.cvsTelefone = cvsTelefone;
     }
+
+    @Override
+    public String toString() {
+        return this.getCvsNome();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof CvsFuncionarios) {
+            CvsFuncionarios o = (CvsFuncionarios) obj;
+            if (o.getCvsIdFuncionario()== this.getCvsIdFuncionario()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 

@@ -55,7 +55,7 @@ public class CvsUsuarioDAO extends DAOAbstract {
         return lista;
     }
 
-    public boolean list(String usuario, String senha) {
+    public boolean fazerLogin(String usuario, String senha) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CvsUsuario.class);
         criteria.add(Restrictions.eq("cvs_nome", usuario));

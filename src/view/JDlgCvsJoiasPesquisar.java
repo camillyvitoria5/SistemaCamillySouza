@@ -5,6 +5,8 @@
 package view;
 //import bean.cdc_vendedor;
 //import dao.cdc_vendedorDAO;
+import bean.CvsJoias;
+import dao.CvsJoiasDAO;
 import java.util.List;
 /**
  *
@@ -12,6 +14,7 @@ import java.util.List;
  */
 public class JDlgCvsJoiasPesquisar extends javax.swing.JDialog {
     JDlgCvsJoias jDlgFornecedor;
+    ControllerCvsJoias controllerCvsJoias;
 
     /**
      * Creates new form Cdc_jDlgVendedorPesquisar
@@ -20,8 +23,12 @@ public class JDlgCvsJoiasPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        
 
+        CvsJoiasDAO cvsJoiasDAO = new CvsJoiasDAO();
+        List lista = (List) cvsJoiasDAO.listAll();
+        controllerCvsJoias = new ControllerCvsJoias();
+        controllerCvsJoias.setList(lista);
+        jTable1.setModel(controllerCvsJoias);
     }
     
     public void setTelaPai(JDlgCvsJoias jDlgFornecedor){
@@ -39,7 +46,8 @@ public class JDlgCvsJoiasPesquisar extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jBtnOK = new javax.swing.JButton();
+        jBtnCvsOkUsua = new javax.swing.JButton();
+        jBtnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -56,10 +64,17 @@ public class JDlgCvsJoiasPesquisar extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBtnOK.setText("OK");
-        jBtnOK.addActionListener(new java.awt.event.ActionListener() {
+        jBtnCvsOkUsua.setText("OK");
+        jBtnCvsOkUsua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnOKActionPerformed(evt);
+                jBtnCvsOkUsuaActionPerformed(evt);
+            }
+        });
+
+        jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
             }
         });
 
@@ -67,35 +82,44 @@ public class JDlgCvsJoiasPesquisar extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnOK)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBtnCvsOkUsua, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jBtnOK)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnCvsOkUsua)
+                    .addComponent(jBtnCancelar))
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
+    private void jBtnCvsOkUsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCvsOkUsuaActionPerformed
         // TODO add your handling code here:
-        //int linSel = jTable1.getSelectedRow();
-        //cdc_vendedor vendedor = (cdc_vendedor) controllerVendedor.getBean(linSel);
-        //jDlgVendedor.beanView(vendedor);
+        int linSel = jTable1.getSelectedRow();
+        CvsJoias cvsJoias = (CvsJoias) controllerCvsJoias.getBean(linSel);
+        jDlgFornecedor.beanView(cvsJoias);
         setVisible(false);
-    }//GEN-LAST:event_jBtnOKActionPerformed
+    }//GEN-LAST:event_jBtnCvsOkUsuaActionPerformed
+
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,7 +167,8 @@ public class JDlgCvsJoiasPesquisar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnOK;
+    private javax.swing.JButton jBtnCancelar;
+    private javax.swing.JButton jBtnCvsOkUsua;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
